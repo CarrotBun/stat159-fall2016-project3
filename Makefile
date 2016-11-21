@@ -12,7 +12,7 @@ data:
 	curl -o $(dataset).zip https://ed-public-download.apps.cloud.gov/downloads/CollegeScorecard_Raw_Data.zip
 	unzip -u $(dataset).zip -d $(rawData)
 	rm -f $(rawData)/Crosswalks_20160908.zip
-	rm -f $(extradata19) $(extradata20)
-
+	
 cleaning: 
+	rm -f $(extradata19) $(extradata20)
 	Rscript code/scripts/cleaning.R
