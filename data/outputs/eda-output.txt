@@ -1,0 +1,49 @@
+Quantitative Variable Information
+
+Summary of UGDS White
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.01488 0.54770 0.45890 0.75680 1.00000 
+
+Summary of UGDS Black
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.0000  0.0512  0.1172  0.1379  1.0000 
+
+Summary of UGDS Hispanic
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.00000 0.03490 0.09087 0.09072 1.00000 
+
+Summary of UGDS Asian
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.00000 0.01060 0.02873 0.02950 1.00000 
+
+Summary of UGDS American Indian/Native Alaskan
+    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.000000 0.000000 0.002000 0.005772 0.005200 1.000000 
+
+Summary of UGDS 2 or More Races
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.00000 0.00800 0.01538 0.02380 0.41180 
+
+Summary of UGDS Non-Resident Alien
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.00000 0.00890 0.02597 0.03030 0.99450 
+
+Summary of UGDS Unknown
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+0.00000 0.00480 0.02710 0.06093 0.07110 1.00000 
+
+Summary of Admission Rate
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+ 0.0000  0.5382  0.6953  0.6773  0.8333  1.0000 
+
+Summary of Other Descriptive Statistics
+                     categories         sd      iqr  range
+1                         White 0.33707089 0.741925 1.0000
+2                         Black 0.18132392 0.137900 1.0000
+3                      Hispanic 0.17007734 0.090725 1.0000
+4                         Asian 0.05873263 0.029500 1.0000
+5 American Indian/Alaska Native 0.02500397 0.005200 1.0000
+6               2 or More Races 0.02277176 0.023800 0.4118
+7            Non-Resident Alien 0.05233459 0.030300 0.9945
+8                       Unknown 0.11253302 0.066300 1.0000
+9                Admission Rate 0.21331208 0.295125 1.0000
