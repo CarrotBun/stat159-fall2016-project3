@@ -225,7 +225,7 @@ ggplot(data = data) +
                  col = '#000000',fill = '#ffc5c5') +
   xlab('Age') +
   ylab('Count') +
-  ggtitle('Histogram of Percentage of UGDS ASIAN')
+  ggtitle('Histogram of Percentage of UGDS Asian')
 dev.off()
 
 png('images/histogram-UGDS-aian.png')
@@ -234,7 +234,7 @@ ggplot(data = data) +
                  col = '#000000',fill = '#f9f6b9') +
   xlab('Age') +
   ylab('Count') +
-  ggtitle('Histogram of Percentage of UGDS AIAN')
+  ggtitle('Histogram of Percentage of UGDS American Indian/Alaska Native')
 dev.off()
 
 png('images/histogram-UGDS-nhpi.png')
@@ -243,7 +243,7 @@ ggplot(data = data) +
                  col = '#000000',fill = '#b8f2c2') +
   xlab('Age') +
   ylab('Count') +
-  ggtitle('Histogram of Percentage of UGDS NHPI')
+  ggtitle('Histogram of Percentage of UGDS Native Hawaiian/Pacific Islander')
 dev.off()
 
 png('images/histogram-UGDS-2mor.png')
@@ -270,7 +270,7 @@ ggplot(data = data) +
                  col = '#000000',fill = '#ffc0ee') +
   xlab('Age') +
   ylab('Count') +
-  ggtitle('Histogram of Percentage of UGDS NRA')
+  ggtitle('Histogram of Percentage of UGDS Non-Resident Alien')
 dev.off()
 
 
