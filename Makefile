@@ -21,7 +21,11 @@ cleaning:
 
 # This target will run the script eda-script.R. This will output eda-out.txt which contains exploratory information and eda-correlation-matrix.txt. For this reason, we made two separate targets with the two output files.
 
-eda: $(dataout)/eda-correlation-matrix.txt
+eda: $(dataout)/eda-output.txt $(dataout)/eda-correlation-matrix.txt
+
+# This target is for the output eda-output.txt.
+$(dataout)/eda-output.txt: $(codescr)/eda-script.R
+	Rscript $(codescr)/eda-script.R
 
 # This target is for the eda-correlation-matrix.txt output. 
 $(dataout)/eda-correlation-matrix.txt: $(codescr)/eda-script.R
