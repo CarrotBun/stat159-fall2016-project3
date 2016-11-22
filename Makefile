@@ -14,5 +14,5 @@ data:
 	rm -f $(rawData)/Crosswalks_20160908.zip
 	
 cleaning: 
-	rm -f $(extradata19) $(extradata20)
+	rm -f $(extradata19) 
 	Rscript code/scripts/cleaning.R
