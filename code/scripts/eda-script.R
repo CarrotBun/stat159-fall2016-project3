@@ -3,6 +3,9 @@ data <- read.csv('data/colleges.csv', header = TRUE)
 data$X <- NULL
 library(ggplot2)
 
+
+
+
 # Correlation Matrix Quantitative Variables
 quant <- data.frame(data$UGDS_WHITE, data$UGDS_BLACK, 
                     data$UGDS_HISP, data$UGDS_ASIAN,
@@ -273,5 +276,51 @@ ggplot(data = data) +
   ggtitle('Histogram of Percentage of UGDS Non-Resident Alien')
 dev.off()
 
+#Summary Stats for Some Quantitative Variables (won't produce NAs in table)
+categories <- c('White', 'Black', 'Hispanic', 'Asian', 'American Indian/Alaska Native', 
+                '2 or More Races', 'Non-Resident Alien', 'Unknown','Admission Rate')
+sd <- c(sd(data$UGDS_WHITE), sd(data$UGDS_BLACK), 
+         sd(data$UGDS_HISP), sd(data$UGDS_ASIAN),
+         sd(data$UGDS_AIAN), sd(data$UGDS_2MOR), sd(data$UGDS_NRA), sd(data$UGDS_UNKN),
+        sd(data$ADM_RATE))
+iqr <- c(IQR(data$UGDS_WHITE), IQR(data$UGDS_BLACK), 
+         IQR(data$UGDS_HISP), IQR(data$UGDS_ASIAN),
+         IQR(data$UGDS_AIAN), IQR(data$UGDS_2MOR), IQR(data$UGDS_NRA), IQR(data$UGDS_UNKN),
+         IQR(data$ADM_RATE))
+range <- c(max(data$UGDS_WHITE)-min(data$UGDS_WHITE), 
+           max(data$UGDS_BLACK)-min(data$UGDS_BLACK),
+           max(data$UGDS_HISP)-min(data$UGDS_HISP),
+           max(data$UGDS_ASIAN)-min(data$UGDS_ASIAN),
+           max(data$UGDS_AIAN)-min(data$UGDS_AIAN),
+           max(data$UGDS_2MOR)-min(data$UGDS_2MOR),
+           max(data$UGDS_NRA)-min(data$UGDS_NRA),
+           max(data$UGDS_UNKN)-min(data$UGDS_UNKN),
+           max(data$ADM_RATE)-min(data$ADM_RATE))
+data_frame <- data.frame (categories, sd, iqr, range)
+
+#Producing Eda Output File
+sink('data/outputs/eda-output.txt')
+cat('Quantitative Variable Information\n')
+cat('\nSummary of UGDS White\n')
+summary(data$UGDS_WHITE)
+cat('\nSummary of UGDS Black\n')
+summary(data$UGDS_BLACK)
+cat('\nSummary of UGDS Hispanic\n')
+summary(data$UGDS_HISP)
+cat('\nSummary of UGDS Asian\n')
+summary(data$UGDS_ASIAN)
+cat('\nSummary of UGDS American Indian/Native Alaskan\n')
+summary(data$UGDS_AIAN)
+cat('\nSummary of UGDS 2 or More Races\n')
+summary(data$UGDS_2MOR)
+cat('\nSummary of UGDS Non-Resident Alien\n')
+summary(data$UGDS_NRA)
+cat('\nSummary of UGDS Unknown\n')
+summary(data$UGDS_UNKN)
+cat('\nSummary of Admission Rate\n')
+summary(data$ADM_RATE)
+cat('\nSummary of Other Descriptive Statistics\n')
+print(data_frame)
+sink()
 
 
