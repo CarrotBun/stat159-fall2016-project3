@@ -2,12 +2,12 @@
 #The train set will be used to build the model, and the test will be used to test the model. 
 
 #Loading in the data to be parsed. 
-scaled_colleges <- read.csv('data/name of scaled colleges.csv', header = TRUE)
+scaled_colleges <- read.csv('data/scaled-colleges.csv', header = TRUE)
 scaled_colleges$X <- NULL
 
 #creating a sample of indices 
 set.seed(12345)
-indx <- sample(1:nrow(scaled_colleges), .75*nrow(scaled_colleges))
+indx <- sample(1:nrow(scaled_colleges), round(.75*nrow(scaled_colleges), digits = 0))
 
 #creating a train set using the indices chosen from the sample above. 
 train_set <- scaled_colleges[indx, ]
