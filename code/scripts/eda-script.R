@@ -1,5 +1,5 @@
 # Loading Data and Necessary Packages
-data <- read.csv('data/colleges.csv', header = TRUE)
+data <- read.csv('data/datasets/colleges.csv', header = TRUE)
 data$X <- NULL
 library(ggplot2)
 
