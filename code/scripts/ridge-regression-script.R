@@ -7,7 +7,7 @@ scaled_data <- read.csv('data/scaled-colleges.csv', header = TRUE)
 # Running cv.glmnet()
 grid <- 10^seq(10, -2, length = 100) 
 train_nona <- complete.cases(train_set)
-ridge_matrix <- as.matrix(train_set[train_nona,-83])
+ridge_matrix <- as.matrix(train_set[train_nona,-84])
 cv_ridge <- cv.glmnet(x = ridge_matrix, y = train_set$ADM_RATE[train_nona], lambda = grid,
                       intercept = FALSE, standardize = FALSE, alpha = 0)
 # We set alpha = 0 because in ridge regression, elasticity for ridge regression is 0.
@@ -23,7 +23,7 @@ dev.off()
 
 # Calculating the MSE
 test_nona <- complete.cases(test_set)
-ridge_matrix_new <- as.matrix(test_set[test_nona,-83])
+ridge_matrix_new <- as.matrix(test_set[test_nona,-84])
 ridge_preditctions <- predict(cv_ridge,ridge_matrix_new, s = lambda_min_ridge)
 ridge_MSE <- mean((ridge_preditctions-test_set$ADM_RATE[test_nona])^2)
 
