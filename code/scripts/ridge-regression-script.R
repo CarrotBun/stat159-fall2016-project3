@@ -29,7 +29,7 @@ ridge_MSE <- mean((ridge_preditctions-test_set$ADM_RATE[test_nona])^2)
 
 # Re-Fitting the Model on the Full Data Set
 scaled_data_nona <- complete.cases(scaled_data)
-full_model <- as.matrix(scaled_data[scaled_data_nona ,-84])
+full_model <- as.matrix(scaled_data[scaled_data_nona ,-83])
 ridge_fit <- glmnet(x = full_model, y = scaled_data$ADM_RATE[scaled_data_nona], 
                     lambda = lambda_min_ridge,
                     intercept = FALSE, standardize = FALSE, alpha = 0)
