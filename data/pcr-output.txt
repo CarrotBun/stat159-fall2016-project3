@@ -1,0 +1,169 @@
+Best Model's Lambda:
+[1] 69
+
+ Test MSE:
+[1] 0.4366076
+
+ Official Model and Coefficients:
+Data: 	X dimension: 1692 83 
+	Y dimension: 1692 1
+Fit method: svdpc
+Number of components considered: 69
+TRAINING: % variance explained
+          1 comps  2 comps  3 comps  4 comps
+X           9.229    14.88    18.61    21.98
+ADM_RATE   11.742    11.81    12.05    15.36
+          5 comps  6 comps  7 comps  8 comps
+X           25.19    28.08    30.79    33.44
+ADM_RATE    15.55    17.37    19.18    19.76
+          9 comps  10 comps  11 comps
+X           35.99     38.51     40.91
+ADM_RATE    20.80     21.85     21.88
+          12 comps  13 comps  14 comps
+X            43.16     45.35     47.48
+ADM_RATE     22.60     22.66     22.73
+          15 comps  16 comps  17 comps
+X            49.55     51.58     53.59
+ADM_RATE     22.97     23.47     23.47
+          18 comps  19 comps  20 comps
+X            55.51     57.40     59.16
+ADM_RATE     23.48     24.14     24.46
+          21 comps  22 comps  23 comps
+X            60.90     62.54     64.12
+ADM_RATE     24.54     24.64     24.65
+          24 comps  25 comps  26 comps
+X            65.66     67.15     68.61
+ADM_RATE     24.75     24.86     24.92
+          27 comps  28 comps  29 comps
+X            70.05     71.45     72.83
+ADM_RATE     24.93     25.01     25.87
+          30 comps  31 comps  32 comps
+X            74.18     75.49     76.75
+ADM_RATE     28.01     28.01     28.61
+          33 comps  34 comps  35 comps
+X            77.98     79.18     80.34
+ADM_RATE     28.74     29.44     30.00
+          36 comps  37 comps  38 comps
+X            81.46     82.56     83.65
+ADM_RATE     30.06     30.20     30.64
+          39 comps  40 comps  41 comps
+X            84.68     85.69     86.68
+ADM_RATE     31.05     31.12     31.14
+          42 comps  43 comps  44 comps
+X            87.61     88.46     89.28
+ADM_RATE     31.36     31.72     32.93
+          45 comps  46 comps  47 comps
+X            90.09     90.87     91.58
+ADM_RATE     33.12     33.23     33.27
+          48 comps  49 comps  50 comps
+X            92.25     92.88     93.50
+ADM_RATE     33.31     34.14     34.24
+          51 comps  52 comps  53 comps
+X            94.10     94.68     95.23
+ADM_RATE     34.36     34.41     34.51
+          54 comps  55 comps  56 comps
+X            95.77     96.28     96.74
+ADM_RATE     34.89     35.50     35.55
+          57 comps  58 comps  59 comps
+X            97.15     97.51     97.87
+ADM_RATE     35.58     35.63     35.65
+          60 comps  61 comps  62 comps
+X            98.21     98.46     98.68
+ADM_RATE     35.81     35.82     36.60
+          63 comps  64 comps  65 comps
+X            98.90     99.09     99.26
+ADM_RATE     36.61     36.61     39.18
+          66 comps  67 comps  68 comps
+X            99.42     99.56     99.68
+ADM_RATE     39.19     39.22     39.29
+          69 comps
+X            99.76
+ADM_RATE     39.70
+
+, , 69 comps
+
+                     ADM_RATE
+STABBRAL         2.711290e-02
+STABBRAR        -3.446336e-03
+STABBRAZ         4.734396e-02
+STABBRCA        -6.506159e-02
+STABBRCO         2.260983e-02
+STABBRCT        -1.232293e-02
+STABBRDC        -9.053945e-03
+STABBRDE        -3.424264e-02
+STABBRFL        -4.516920e-02
+STABBRFM        -1.210882e-16
+STABBRGA        -2.778941e-03
+STABBRGU         1.222427e-16
+STABBRHI        -3.321872e-03
+STABBRIA         4.986283e-02
+STABBRID         1.898204e-02
+STABBRIL        -1.194519e-02
+STABBRIN         4.849898e-02
+STABBRKS        -5.173319e-02
+STABBRKY        -6.536011e-02
+STABBRLA         2.055821e-02
+STABBRMA        -3.516137e-02
+STABBRMD        -2.493703e-02
+STABBRME         4.950505e-02
+STABBRMH         1.001326e-16
+STABBRMI         2.503394e-02
+STABBRMN         1.203545e-02
+STABBRMO        -3.822440e-02
+STABBRMS        -1.981002e-02
+STABBRMT         1.985974e-02
+STABBRNC        -3.434373e-02
+STABBRND        -7.871330e-03
+STABBRNE        -1.000664e-02
+STABBRNH         2.235052e-02
+STABBRNJ        -8.874091e-03
+STABBRNM         7.381303e-02
+STABBRNV         1.855705e-02
+STABBRNY        -2.174808e-02
+STABBROH         8.014273e-02
+STABBROK        -1.725242e-02
+STABBROR        -2.399918e-03
+STABBRPA         3.139707e-02
+STABBRPR        -3.982562e-17
+STABBRRI        -3.500298e-05
+STABBRSC        -8.626612e-03
+STABBRSD         2.873003e-02
+STABBRTN        -2.589953e-02
+STABBRTX        -1.817000e-02
+STABBRUT         3.650686e-02
+STABBRVA         2.269554e-02
+STABBRVI         2.149486e-02
+STABBRVT         4.158600e-02
+STABBRWA         4.844362e-02
+STABBRWI         2.347859e-02
+STABBRWV        -3.224037e-02
+STABBRWY         7.050554e-17
+ZIP              5.441422e-03
+UGDS_WHITE      -6.420577e-04
+UGDS_BLACK      -1.717769e-01
+UGDS_HISP        1.462105e-02
+UGDS_ASIAN      -7.206736e-03
+UGDS_AIAN        9.383498e-03
+UGDS_NHPI        1.224572e-02
+UGDS_2MOR        3.062714e-02
+UGDS_NRA        -4.442967e-02
+UGDS_UNKN       -3.171419e-03
+AGE_ENTRY        2.595480e-02
+UGDS_WOMEN       5.795581e-02
+MARRIED          6.797908e-02
+FIRST_GEN       -7.304377e-02
+FAMINC           2.560043e-01
+MN_EARN_WNE_P10 -9.070664e-02
+ST_FIPS          4.910811e-02
+SATVR25         -2.139875e-01
+SATVR75         -2.227068e-02
+SATMT25         -1.051615e-01
+SATMT75          1.081472e-01
+SATWR25         -2.008303e-01
+SATWR75         -1.628396e-02
+completion      -1.826630e-01
+transfer        -5.085059e-02
+LOCALE          -1.463772e-02
+CCUGPROF         1.815245e-01
+Year             3.623914e-02
+
