@@ -2,7 +2,7 @@
 library(glmnet)
 load('data/RData-files/train-test-sets.RData')
 set.seed(98765)
-scaled_data <- read.csv('data/scaled-colleges.csv', header = TRUE)
+scaled_data <- read.csv('data/datasets/scaled-colleges.csv', header = TRUE)
 
 # Running cv.glmnet()
 grid <- 10^seq(10, -2, length = 100) 
