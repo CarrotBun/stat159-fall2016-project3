@@ -1,14 +1,14 @@
 #Loading in the required packages and data
 library(pls)
 load('data/RData-files/train-test-sets.RData')
-scaled_credit <- read.csv('data/datasets/scaled-credit.csv')
-scaled_credit$X <- NULL
+scaled_colleges <- read.csv('data/datasets/scaled-colleges.csv')
+scaled_colleges$X <- NULL
 
 #setting a random seed to run the ten-cross validation 
 set.seed(27182)
 
 #fitting a partial least squares regression to the training data: 
-cv_pls <- plsr(Balance ~ ., data = train_set, validation = 'CV')
+cv_pls <- plsr(ADM_RATE ~ ., data = train_set, validation = 'CV')
 
 #finding the "best" model
 lambda_min_pls <- which.min(cv_pls$validation$PRESS)
@@ -21,11 +21,11 @@ dev.off()
 pls_predictions <- predict(cv_pls, newdata = test_set, ncomp = lambda_min_pls)
 
 #Finding the MSE of the test data model fit. 
-pls_mse <- mean((pls_predictions-test_set$Balance)^2)
+pls_mse <- mean((pls_predictions-test_set$ADM_RATE)^2)
 
 #Now we find the official coefficents by using the model calculated above on the full 
 #data set
-pls_fit <- plsr(Balance ~ ., data = scaled_credit, ncomp = lambda_min_pls)
+pls_fit <- plsr(ADM_RATE ~ ., data = scaled_colleges, ncomp = lambda_min_pls)
 
 #finding the official coefficients: 
 pls_coef_full <- coef(pls_fit)
