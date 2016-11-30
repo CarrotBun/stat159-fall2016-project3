@@ -1,0 +1,23 @@
+```{r, echo = FALSE, include = FALSE}
+# Loading in the necesary data files. 
+load('../data/RData-files/ols-regression.RData')
+load('../data/RData-files/ridge-regression.RData')
+load('../data/RData-files/lasso-regression.RData')
+load('../data/RData-files/pc-regression.RData')
+load('../data/RData-files/pls-regression.RData')
+scaled_credit <- read.csv('../data/datasets/scaled-credit.csv')
+
+## the following line is added so that this s4 class object can be coerced into type matrix in the make file.
+ridge_coef_full
+
+# Loading in required packages.
+library(xtable)
+library(png)
+library(grid)
+library(ggplot2)
+library(reshape)
+library(Matrix)
+```
+#Objective
+Our goal in this project is to help our client, who are group of administrators trying to make their school more competitive. 
+
