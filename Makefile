@@ -6,7 +6,7 @@ dataout = data/outputs
 codescr = code/scripts
 dataR = data/RData-files
 
-.PHONY: all data cleaning processing eda
+.PHONY: all data cleaning processing eda session traintest ridge ols
 
 all: data cleaning processing
 
@@ -22,6 +22,13 @@ cleaning:
 
 processing:
 	Rscript code/scripts/processing.R
+
+# This target will output session-info.txt. 
+session: session-info.txt
+
+# This target allocates a target file for the output of sesison.sh
+session-info.txt: $(codescr)/session.sh
+	bash $(codescr)/session.sh
 
 # This target takes the scaled data set and creates train and test sets. 
 traintest: data/RData-files/train-test-sets.RData

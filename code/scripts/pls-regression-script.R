@@ -10,9 +10,10 @@ set.seed(27182)
 #fitting a partial least squares regression to the training data: 
 cv_pls <- plsr(ADM_RATE ~ ., data = train_set, validation = 'CV')
 
-#finding the "best" model
+#finding the "best" model which looks at the cross validated models
 lambda_min_pls <- which.min(cv_pls$validation$PRESS)
 
+#uploading an image of the MSE Plot
 png(filename = 'images/cv-pls-mse-plot.png')
 validationplot(cv_pls, val.type = 'MSEP')
 dev.off()
