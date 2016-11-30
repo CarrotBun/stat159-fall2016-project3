@@ -1,0 +1,214 @@
+This is the output of the ten-fold cross validation using Lasso regression
+ on the training data set
+Data: 	X dimension: 1247 113 
+	Y dimension: 1247 1
+Fit method: kernelpls
+Number of components considered: 113
+
+VALIDATION: RMSEP
+Cross-validated using 10 random segments.
+       (Intercept)  1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps  9 comps
+CV           0.795   0.7151   0.6671   0.6592   0.6575   0.6562   0.6536   0.6518   0.6498   0.6503
+adjCV        0.795   0.7148   0.6656   0.6571   0.6548   0.6535   0.6509   0.6487   0.6464   0.6471
+       10 comps  11 comps  12 comps  13 comps  14 comps  15 comps  16 comps  17 comps  18 comps
+CV       0.6496    0.6493    0.6492    0.6468    0.6464    0.6448    0.6458    0.6458    0.6457
+adjCV    0.6465    0.6462    0.6462    0.6439    0.6434    0.6416    0.6425    0.6425    0.6424
+       19 comps  20 comps  21 comps  22 comps  23 comps  24 comps  25 comps  26 comps  27 comps
+CV       0.6459    0.6452    0.6451    0.6450    0.6451    0.6447    0.6448    0.6442    0.6441
+adjCV    0.6426    0.6420    0.6419    0.6418    0.6419    0.6415    0.6416    0.6411    0.6410
+       28 comps  29 comps  30 comps  31 comps  32 comps  33 comps  34 comps  35 comps  36 comps
+CV       0.6439    0.6439    0.6437    0.6435    0.6435    0.6433    0.6434    0.6435    0.6434
+adjCV    0.6408    0.6407    0.6406    0.6404    0.6404    0.6402    0.6403    0.6403    0.6403
+       37 comps  38 comps  39 comps  40 comps  41 comps  42 comps  43 comps  44 comps  45 comps
+CV       0.6433    0.6433    0.6433    0.6433    0.6432    0.6432    0.6432    0.6432    0.6431
+adjCV    0.6402    0.6402    0.6402    0.6402    0.6401    0.6401    0.6401    0.6401    0.6400
+       46 comps  47 comps  48 comps  49 comps  50 comps  51 comps  52 comps  53 comps  54 comps
+CV       0.6432    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431
+adjCV    0.6401    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400
+       55 comps  56 comps  57 comps  58 comps  59 comps  60 comps  61 comps  62 comps  63 comps
+CV       0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431
+adjCV    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400
+       64 comps  65 comps  66 comps  67 comps  68 comps  69 comps  70 comps  71 comps  72 comps
+CV       0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431
+adjCV    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400
+       73 comps  74 comps  75 comps  76 comps  77 comps  78 comps  79 comps  80 comps  81 comps
+CV       0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431
+adjCV    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400
+       82 comps  83 comps  84 comps  85 comps  86 comps  87 comps  88 comps  89 comps  90 comps
+CV       0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431
+adjCV    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400
+       91 comps  92 comps  93 comps  94 comps  95 comps  96 comps  97 comps  98 comps  99 comps
+CV       0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431    0.6431
+adjCV    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400    0.6400
+       100 comps  101 comps  102 comps  103 comps  104 comps  105 comps  106 comps  107 comps  108 comps
+CV        0.6434     0.6434     0.6434     0.6434     0.6434     0.6434     0.6434     0.6434     0.6434
+adjCV     0.6402     0.6402     0.6402     0.6402     0.6402     0.6402     0.6402     0.6402     0.6402
+       109 comps  110 comps  111 comps  112 comps  113 comps
+CV        0.6434     0.6434     0.6434     0.6434     0.6434
+adjCV     0.6402     0.6402     0.6402     0.6402     0.6402
+
+TRAINING: % variance explained
+          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps  9 comps  10 comps
+X           7.441    9.915    11.72    13.90    16.32    18.16    19.45    20.60    22.57     24.46
+ADM_RATE   21.081   35.442    39.07    40.62    41.62    42.44    43.10    43.61    43.83     43.98
+          11 comps  12 comps  13 comps  14 comps  15 comps  16 comps  17 comps  18 comps  19 comps
+X            26.08     27.96     29.53     30.84     31.90     33.20     34.59     36.25     37.56
+ADM_RATE     44.10     44.23     44.42     44.64     44.88     45.02     45.10     45.16     45.23
+          20 comps  21 comps  22 comps  23 comps  24 comps  25 comps  26 comps  27 comps  28 comps
+X            38.96     40.11     41.12     42.31     43.37     44.55     45.52     46.62     47.65
+ADM_RATE     45.27     45.33     45.38     45.41     45.44     45.46     45.48     45.49     45.51
+          29 comps  30 comps  31 comps  32 comps  33 comps  34 comps  35 comps  36 comps  37 comps
+X            48.58     49.80     50.72     51.65     52.62     53.61     54.81     55.87     56.85
+ADM_RATE     45.52     45.53     45.53     45.54     45.54     45.54     45.54     45.54     45.54
+          38 comps  39 comps  40 comps  41 comps  42 comps  43 comps  44 comps  45 comps  46 comps
+X            57.70     58.45     59.32     60.20     61.23     62.10     63.16     64.01     64.95
+ADM_RATE     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54
+          47 comps  48 comps  49 comps  50 comps  51 comps  52 comps  53 comps  54 comps  55 comps
+X            65.95     66.63     67.36     68.11     68.83     69.63     70.45     71.34     72.08
+ADM_RATE     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54
+          56 comps  57 comps  58 comps  59 comps  60 comps  61 comps  62 comps  63 comps  64 comps
+X            72.91     73.73     74.59     75.33     76.14     76.85     77.53     78.20     78.77
+ADM_RATE     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54
+          65 comps  66 comps  67 comps  68 comps  69 comps  70 comps  71 comps  72 comps  73 comps
+X            79.44     80.21     80.91     81.62     82.22     82.84     83.39     84.09     84.69
+ADM_RATE     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54
+          74 comps  75 comps  76 comps  77 comps  78 comps  79 comps  80 comps  81 comps  82 comps
+X            85.38     86.11     86.70     87.40     87.82     88.43     88.84     89.38     90.00
+ADM_RATE     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54
+          83 comps  84 comps  85 comps  86 comps  87 comps  88 comps  89 comps  90 comps  91 comps
+X            90.59     91.17     91.74     92.17     92.70     93.24     93.63     94.18     94.75
+ADM_RATE     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54
+          92 comps  93 comps  94 comps  95 comps  96 comps  97 comps  98 comps  99 comps  100 comps
+X            95.32     95.83     96.37     96.96     97.64     98.31     98.77     99.23     100.00
+ADM_RATE     45.54     45.54     45.54     45.54     45.54     45.54     45.54     45.54      45.54
+          101 comps  102 comps  103 comps  104 comps  105 comps  106 comps  107 comps  108 comps
+X            100.06     100.12     100.17     100.23     100.29     100.35     100.41     100.46
+ADM_RATE      45.54      45.54      45.54      45.54      45.54      45.54      45.54      45.54
+          109 comps  110 comps  111 comps  112 comps  113 comps
+X            100.52     100.58     100.64     100.70     100.76
+ADM_RATE      45.54      45.54      45.54      45.54      45.54
+NULL
+
+This is the minimum lambda that represents the "best" model
+[1] 50
+
+This is the MSE of the testing data set when the training model is implemented
+[1] NA
+
+These are the official coefficients calcualted using the "best" model lambda and the full datset, , 50 comps
+
+                     ADM_RATE
+UGDS             0.0375060458
+UGDS_WHITE      -0.0074573830
+UGDS_BLACK      -0.1734137692
+UGDS_HISP        0.0196820296
+UGDS_ASIAN      -0.0236758769
+UGDS_AIAN        0.0121957721
+UGDS_NHPI       -0.0050102091
+UGDS_2MOR        0.0361496073
+UGDS_NRA        -0.0499887067
+UGDS_UNKN       -0.0061333768
+AGE_ENTRY        0.0157418423
+UGDS_WOMEN       0.0847583484
+MARRIED          0.0919120335
+FIRST_GEN       -0.1572304406
+FAMINC           0.2192732837
+MN_EARN_WNE_P10 -0.0634336860
+ST_FIPS2        -0.0097968040
+ST_FIPS4         0.0238160591
+ST_FIPS5        -0.0121809502
+ST_FIPS6        -0.0984450604
+ST_FIPS8         0.0111997211
+ST_FIPS9        -0.0227042604
+ST_FIPS10       -0.0429824921
+ST_FIPS11       -0.0209495824
+ST_FIPS12       -0.0738088711
+ST_FIPS13       -0.0216794459
+ST_FIPS15       -0.0085230041
+ST_FIPS16        0.0045670008
+ST_FIPS17       -0.0221027404
+ST_FIPS18        0.0295256198
+ST_FIPS19        0.0273066163
+ST_FIPS20       -0.0606454930
+ST_FIPS21       -0.0668513169
+ST_FIPS22       -0.0006093754
+ST_FIPS23        0.0361046084
+ST_FIPS24       -0.0295847006
+ST_FIPS25       -0.0471573066
+ST_FIPS26        0.0141306431
+ST_FIPS27       -0.0043324594
+ST_FIPS28       -0.0310850014
+ST_FIPS29       -0.0448423688
+ST_FIPS30        0.0144499318
+ST_FIPS31       -0.0110672565
+ST_FIPS32        0.0180348803
+ST_FIPS33        0.0108349889
+ST_FIPS34       -0.0107867723
+ST_FIPS35        0.0694474962
+ST_FIPS36       -0.0352905396
+ST_FIPS37       -0.0490516839
+ST_FIPS38       -0.0112557095
+ST_FIPS39        0.0626247980
+ST_FIPS40       -0.0258168699
+ST_FIPS41       -0.0094765801
+ST_FIPS42        0.0241195475
+ST_FIPS44       -0.0004978137
+ST_FIPS45       -0.0115987635
+ST_FIPS46        0.0229686953
+ST_FIPS47       -0.0261657383
+ST_FIPS48       -0.0247244722
+ST_FIPS49        0.0234047509
+ST_FIPS50        0.0409242184
+ST_FIPS51        0.0194987678
+ST_FIPS53        0.0449766437
+ST_FIPS54       -0.0336451271
+ST_FIPS55        0.0255843487
+ST_FIPS56        0.0000000000
+ST_FIPS64        0.0000000000
+ST_FIPS66        0.0000000000
+ST_FIPS68        0.0000000000
+ST_FIPS72        0.0000000000
+ST_FIPS78        0.0203785150
+SATVR25         -0.1703614925
+SATVR75          0.0454567986
+SATMT25         -0.2011429855
+SATMT75          0.1809657361
+SATWR25         -0.1652479869
+SATWR75         -0.1882045874
+completion      -0.1509559667
+transfer        -0.0430443183
+LOCALE11         0.0103210548
+LOCALE12         0.0018552782
+LOCALE13         0.0134397441
+LOCALE21        -0.0035435605
+LOCALE22         0.0132251469
+LOCALE23        -0.0235877882
+LOCALE31        -0.0130525994
+LOCALE32        -0.0200097440
+LOCALE33         0.0013338648
+LOCALE41        -0.0044771091
+LOCALE42        -0.0036579129
+LOCALE43         0.0224510982
+CCUGPROF0        0.0000000000
+CCUGPROF1        0.0000000000
+CCUGPROF2        0.0000000000
+CCUGPROF3        0.0649809702
+CCUGPROF4       -0.1419192876
+CCUGPROF5        0.2278309873
+CCUGPROF6        0.1930176286
+CCUGPROF7        0.2375831721
+CCUGPROF8        0.0477552329
+CCUGPROF9        0.2675133930
+CCUGPROF10       0.3020856093
+CCUGPROF11       0.3710479868
+CCUGPROF12       0.3418125493
+CCUGPROF13       0.4122248526
+CCUGPROF14       0.3733716407
+CCUGPROF15       0.2998752618
+Year2009        -0.0107333681
+Year2010         0.0000000000
+Year2011         0.0087714185
+Year2012         0.0027409456
+Year2013         0.0000000000
+Year2014         0.0000000000
+
