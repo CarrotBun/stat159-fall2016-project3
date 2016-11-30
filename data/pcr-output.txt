@@ -1,169 +1,205 @@
 Best Model's Lambda:
-[1] 69
+[1] 99
 
  Test MSE:
-[1] 0.4366076
+[1] 0.448906
 
  Official Model and Coefficients:
-Data: 	X dimension: 1692 83 
+Data: 	X dimension: 1692 113 
 	Y dimension: 1692 1
 Fit method: svdpc
-Number of components considered: 69
+Number of components considered: 99
 TRAINING: % variance explained
-          1 comps  2 comps  3 comps  4 comps
-X           9.229    14.88    18.61    21.98
-ADM_RATE   11.742    11.81    12.05    15.36
-          5 comps  6 comps  7 comps  8 comps
-X           25.19    28.08    30.79    33.44
-ADM_RATE    15.55    17.37    19.18    19.76
-          9 comps  10 comps  11 comps
-X           35.99     38.51     40.91
-ADM_RATE    20.80     21.85     21.88
-          12 comps  13 comps  14 comps
-X            43.16     45.35     47.48
-ADM_RATE     22.60     22.66     22.73
-          15 comps  16 comps  17 comps
-X            49.55     51.58     53.59
-ADM_RATE     22.97     23.47     23.47
-          18 comps  19 comps  20 comps
-X            55.51     57.40     59.16
-ADM_RATE     23.48     24.14     24.46
-          21 comps  22 comps  23 comps
-X            60.90     62.54     64.12
-ADM_RATE     24.54     24.64     24.65
-          24 comps  25 comps  26 comps
-X            65.66     67.15     68.61
-ADM_RATE     24.75     24.86     24.92
-          27 comps  28 comps  29 comps
-X            70.05     71.45     72.83
-ADM_RATE     24.93     25.01     25.87
-          30 comps  31 comps  32 comps
-X            74.18     75.49     76.75
-ADM_RATE     28.01     28.01     28.61
-          33 comps  34 comps  35 comps
-X            77.98     79.18     80.34
-ADM_RATE     28.74     29.44     30.00
-          36 comps  37 comps  38 comps
-X            81.46     82.56     83.65
-ADM_RATE     30.06     30.20     30.64
-          39 comps  40 comps  41 comps
-X            84.68     85.69     86.68
-ADM_RATE     31.05     31.12     31.14
-          42 comps  43 comps  44 comps
-X            87.61     88.46     89.28
-ADM_RATE     31.36     31.72     32.93
-          45 comps  46 comps  47 comps
-X            90.09     90.87     91.58
-ADM_RATE     33.12     33.23     33.27
-          48 comps  49 comps  50 comps
-X            92.25     92.88     93.50
-ADM_RATE     33.31     34.14     34.24
-          51 comps  52 comps  53 comps
-X            94.10     94.68     95.23
-ADM_RATE     34.36     34.41     34.51
-          54 comps  55 comps  56 comps
-X            95.77     96.28     96.74
-ADM_RATE     34.89     35.50     35.55
-          57 comps  58 comps  59 comps
-X            97.15     97.51     97.87
-ADM_RATE     35.58     35.63     35.65
-          60 comps  61 comps  62 comps
-X            98.21     98.46     98.68
-ADM_RATE     35.81     35.82     36.60
-          63 comps  64 comps  65 comps
-X            98.90     99.09     99.26
-ADM_RATE     36.61     36.61     39.18
-          66 comps  67 comps  68 comps
-X            99.42     99.56     99.68
-ADM_RATE     39.19     39.22     39.29
-          69 comps
-X            99.76
-ADM_RATE     39.70
+          1 comps  2 comps  3 comps  4 comps  5 comps
+X           7.863    12.12    15.44    18.26    20.88
+ADM_RATE   11.670    11.67    11.68    11.69    11.77
+          6 comps  7 comps  8 comps  9 comps
+X           23.42    25.88    28.07    30.18
+ADM_RATE    14.94    15.09    16.03    16.11
+          10 comps  11 comps  12 comps  13 comps
+X            32.26     34.28     36.27     38.16
+ADM_RATE     16.18     17.45     19.46     19.59
+          14 comps  15 comps  16 comps  17 comps
+X            39.94     41.71     43.47     45.20
+ADM_RATE     20.07     20.10     20.14     20.57
+          18 comps  19 comps  20 comps  21 comps
+X            46.87     48.48     50.04      51.6
+ADM_RATE     21.24     21.36     21.58      21.6
+          22 comps  23 comps  24 comps  25 comps
+X            53.12     54.59     56.04     57.47
+ADM_RATE     23.18     24.09     24.20     24.44
+          26 comps  27 comps  28 comps  29 comps
+X            58.83     60.15     61.43     62.71
+ADM_RATE     24.85     24.96     25.05     25.23
+          30 comps  31 comps  32 comps  33 comps
+X            63.94     65.15     66.34     67.52
+ADM_RATE     25.29     25.31     26.13     27.30
+          34 comps  35 comps  36 comps  37 comps
+X            68.67     69.78     70.85     71.91
+ADM_RATE     27.30     27.41     27.43     27.93
+          38 comps  39 comps  40 comps  41 comps
+X            72.94     73.95     74.92     75.87
+ADM_RATE     28.14     28.51     29.50     29.51
+          42 comps  43 comps  44 comps  45 comps
+X            76.79     77.69     78.58     79.42
+ADM_RATE     29.53     30.14     30.43     31.13
+          46 comps  47 comps  48 comps  49 comps
+X            80.26     81.08     81.89     82.68
+ADM_RATE     31.23     31.24     31.47     31.54
+          50 comps  51 comps  52 comps  53 comps
+X            83.46     84.21     84.95     85.68
+ADM_RATE     32.67     32.68     32.91     33.09
+          54 comps  55 comps  56 comps  57 comps
+X            86.41     87.12     87.79     88.44
+ADM_RATE     33.28     33.30     33.41     33.44
+          58 comps  59 comps  60 comps  61 comps
+X            89.07     89.65     90.22     90.79
+ADM_RATE     33.46     33.47     33.49     34.00
+          62 comps  63 comps  64 comps  65 comps
+X            91.36     91.88     92.37     92.84
+ADM_RATE     34.11     34.12     35.15     35.15
+          66 comps  67 comps  68 comps  69 comps
+X            93.29     93.73     94.16     94.58
+ADM_RATE     35.17     35.43     35.43     35.47
+          70 comps  71 comps  72 comps  73 comps
+X            94.99     95.38     95.77     96.15
+ADM_RATE     35.54     35.68     36.06     36.29
+          74 comps  75 comps  76 comps  77 comps
+X            96.52     96.88     97.19     97.47
+ADM_RATE     36.29     36.29     36.87     36.96
+          78 comps  79 comps  80 comps  81 comps
+X            97.74     97.99     98.22     98.44
+ADM_RATE     36.97     37.02     37.08     37.09
+          82 comps  83 comps  84 comps  85 comps
+X            98.65     98.84     99.02     99.18
+ADM_RATE     37.16     37.31     37.37     37.37
+          86 comps  87 comps  88 comps  89 comps
+X            99.32     99.44     99.56     99.66
+ADM_RATE     37.58     38.67     38.91     40.44
+          90 comps  91 comps  92 comps  93 comps
+X            99.74     99.80     99.85     99.88
+ADM_RATE     40.44     40.59     40.73     40.74
+          94 comps  95 comps  96 comps  97 comps
+X            99.91     99.93     99.95     99.97
+ADM_RATE     41.03     41.13     41.14     41.15
+          98 comps  99 comps
+X            99.98     99.99
+ADM_RATE     41.43     41.44
 
-, , 69 comps
+, , 99 comps
 
                      ADM_RATE
-STABBRAL         2.711290e-02
-STABBRAR        -3.446336e-03
-STABBRAZ         4.734396e-02
-STABBRCA        -6.506159e-02
-STABBRCO         2.260983e-02
-STABBRCT        -1.232293e-02
-STABBRDC        -9.053945e-03
-STABBRDE        -3.424264e-02
-STABBRFL        -4.516920e-02
-STABBRFM        -1.210882e-16
-STABBRGA        -2.778941e-03
-STABBRGU         1.222427e-16
-STABBRHI        -3.321872e-03
-STABBRIA         4.986283e-02
-STABBRID         1.898204e-02
-STABBRIL        -1.194519e-02
-STABBRIN         4.849898e-02
-STABBRKS        -5.173319e-02
-STABBRKY        -6.536011e-02
-STABBRLA         2.055821e-02
-STABBRMA        -3.516137e-02
-STABBRMD        -2.493703e-02
-STABBRME         4.950505e-02
-STABBRMH         1.001326e-16
-STABBRMI         2.503394e-02
-STABBRMN         1.203545e-02
-STABBRMO        -3.822440e-02
-STABBRMS        -1.981002e-02
-STABBRMT         1.985974e-02
-STABBRNC        -3.434373e-02
-STABBRND        -7.871330e-03
-STABBRNE        -1.000664e-02
-STABBRNH         2.235052e-02
-STABBRNJ        -8.874091e-03
-STABBRNM         7.381303e-02
-STABBRNV         1.855705e-02
-STABBRNY        -2.174808e-02
-STABBROH         8.014273e-02
-STABBROK        -1.725242e-02
-STABBROR        -2.399918e-03
-STABBRPA         3.139707e-02
-STABBRPR        -3.982562e-17
-STABBRRI        -3.500298e-05
-STABBRSC        -8.626612e-03
-STABBRSD         2.873003e-02
-STABBRTN        -2.589953e-02
-STABBRTX        -1.817000e-02
-STABBRUT         3.650686e-02
-STABBRVA         2.269554e-02
-STABBRVI         2.149486e-02
-STABBRVT         4.158600e-02
-STABBRWA         4.844362e-02
-STABBRWI         2.347859e-02
-STABBRWV        -3.224037e-02
-STABBRWY         7.050554e-17
-ZIP              5.441422e-03
-UGDS_WHITE      -6.420577e-04
-UGDS_BLACK      -1.717769e-01
-UGDS_HISP        1.462105e-02
-UGDS_ASIAN      -7.206736e-03
-UGDS_AIAN        9.383498e-03
-UGDS_NHPI        1.224572e-02
-UGDS_2MOR        3.062714e-02
-UGDS_NRA        -4.442967e-02
-UGDS_UNKN       -3.171419e-03
-AGE_ENTRY        2.595480e-02
-UGDS_WOMEN       5.795581e-02
-MARRIED          6.797908e-02
-FIRST_GEN       -7.304377e-02
-FAMINC           2.560043e-01
-MN_EARN_WNE_P10 -9.070664e-02
-ST_FIPS          4.910811e-02
-SATVR25         -2.139875e-01
-SATVR75         -2.227068e-02
-SATMT25         -1.051615e-01
-SATMT75          1.081472e-01
-SATWR25         -2.008303e-01
-SATWR75         -1.628396e-02
-completion      -1.826630e-01
-transfer        -5.085059e-02
-LOCALE          -1.463772e-02
-CCUGPROF         1.815245e-01
-Year             3.623914e-02
+UGDS             3.721535e-02
+UGDS_WHITE      -1.212545e-02
+UGDS_BLACK      -1.662946e-01
+UGDS_HISP        2.235257e-02
+UGDS_ASIAN      -1.965791e-02
+UGDS_AIAN        1.528059e-02
+UGDS_NHPI       -3.470695e-02
+UGDS_2MOR        4.078251e-02
+UGDS_NRA        -4.168881e-02
+UGDS_UNKN        2.178039e-03
+AGE_ENTRY        9.096778e-03
+UGDS_WOMEN       5.668955e-02
+MARRIED          7.934873e-02
+FIRST_GEN       -1.407487e-01
+FAMINC           2.442043e-01
+MN_EARN_WNE_P10 -7.968749e-02
+ST_FIPS2        -1.056153e-02
+ST_FIPS4         2.221844e-02
+ST_FIPS5        -1.237393e-02
+ST_FIPS6        -1.002473e-01
+ST_FIPS8         9.031572e-03
+ST_FIPS9        -3.365596e-02
+ST_FIPS10       -4.362633e-02
+ST_FIPS11       -2.261887e-02
+ST_FIPS12       -7.917463e-02
+ST_FIPS13       -2.263218e-02
+ST_FIPS15       -8.325410e-03
+ST_FIPS16        4.000654e-03
+ST_FIPS17       -2.289454e-02
+ST_FIPS18        2.751084e-02
+ST_FIPS19        2.890065e-02
+ST_FIPS20       -5.920314e-02
+ST_FIPS21       -6.785721e-02
+ST_FIPS22       -9.985296e-04
+ST_FIPS23        3.474252e-02
+ST_FIPS24       -3.123777e-02
+ST_FIPS25       -5.321475e-02
+ST_FIPS26        1.206562e-02
+ST_FIPS27       -4.900474e-03
+ST_FIPS28       -3.514130e-02
+ST_FIPS29       -4.580528e-02
+ST_FIPS30        1.394739e-02
+ST_FIPS31       -9.946489e-03
+ST_FIPS32        1.679591e-02
+ST_FIPS33        8.998481e-03
+ST_FIPS34       -1.334538e-02
+ST_FIPS35        6.835775e-02
+ST_FIPS36       -3.474689e-02
+ST_FIPS37       -4.854170e-02
+ST_FIPS38       -1.103179e-02
+ST_FIPS39        6.152430e-02
+ST_FIPS40       -2.677722e-02
+ST_FIPS41       -8.230704e-03
+ST_FIPS42        1.950844e-02
+ST_FIPS44       -1.602698e-03
+ST_FIPS45       -1.193262e-02
+ST_FIPS46        2.355963e-02
+ST_FIPS47       -2.577954e-02
+ST_FIPS48       -2.524233e-02
+ST_FIPS49        2.597541e-02
+ST_FIPS50        3.883024e-02
+ST_FIPS51        1.795997e-02
+ST_FIPS53        4.473830e-02
+ST_FIPS54       -3.409806e-02
+ST_FIPS55        2.378104e-02
+ST_FIPS56        1.035984e-16
+ST_FIPS64        1.433759e-16
+ST_FIPS66       -2.559451e-16
+ST_FIPS68       -3.927054e-17
+ST_FIPS72        1.525524e-17
+ST_FIPS78        1.990196e-02
+SATVR25         -1.693782e-01
+SATVR75          8.316839e-02
+SATMT25         -2.056509e-01
+SATMT75          1.594150e-01
+SATWR25         -1.505541e-01
+SATWR75         -1.967879e-01
+completion      -1.617154e-01
+transfer        -4.740851e-02
+LOCALE11         1.159763e-02
+LOCALE12         1.535120e-03
+LOCALE13         1.341420e-02
+LOCALE21        -4.838741e-03
+LOCALE22         1.151040e-02
+LOCALE23        -2.337871e-02
+LOCALE31        -1.259557e-02
+LOCALE32        -1.961070e-02
+LOCALE33         1.454140e-03
+LOCALE41        -3.919622e-03
+LOCALE42        -4.012433e-03
+LOCALE43         2.355935e-02
+CCUGPROF0        3.416368e-17
+CCUGPROF1        1.098037e-17
+CCUGPROF2        1.677187e-17
+CCUGPROF3       -4.977043e-02
+CCUGPROF4       -4.187905e-01
+CCUGPROF5        2.400634e-02
+CCUGPROF6        2.684895e-02
+CCUGPROF7        1.979353e-02
+CCUGPROF8        6.400827e-03
+CCUGPROF9        3.036990e-02
+CCUGPROF10       5.709908e-02
+CCUGPROF11       3.831388e-02
+CCUGPROF12       1.069511e-01
+CCUGPROF13       7.197967e-02
+CCUGPROF14       3.855356e-02
+CCUGPROF15       7.334469e-02
+Year2009        -1.076967e-02
+Year2010         0.000000e+00
+Year2011         9.502826e-03
+Year2012         2.043776e-03
+Year2013         0.000000e+00
+Year2014         0.000000e+00
 

@@ -4,7 +4,7 @@ set.seed(98765)
 ########################### Load Data and T-T indicies ##########################
 source("code/scripts/train-test-sets-script.R")
 # rows with only no NA's
-train_nona <- complete.cases(train_set)
+train_nona = complete.cases(train_set)
 
 ########################### Run PCR and Cross Validation ##########################
 pcr_train = pcr(ADM_RATE ~ ., data= train_set[train_nona, ], validation = "CV")
@@ -24,7 +24,7 @@ dev.off()
 test_nona = complete.cases(test_set)
 
 # get predicted admissions rates with test set
-pcr_pred <- predict(pcr_train, test_set[test_nona,-84], ncomp = pcr_best)
+pcr_pred <- predict(pcr_train, test_set[test_nona,-114], ncomp = pcr_best)
 pcr_tMSE <- mean((pcr_pred - test_set[test_nona, "ADM_RATE"])^2)
 
 ########################### Full Model ##########################
