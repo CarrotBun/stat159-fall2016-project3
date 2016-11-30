@@ -5,9 +5,9 @@ extradata19 = $(wildcard data/raw/MERGED19*.csv)
 dataout = data/outputs
 codescr = code/scripts
 
-.PHONY: all data cleaning eda
+.PHONY: all data cleaning processing eda
 
-all: data cleaning
+all: data cleaning processing
 
 # download data file
 data:
@@ -18,6 +18,9 @@ data:
 cleaning: 
 	rm -f $(extradata19) 
 	Rscript code/scripts/cleaning.R
+
+processing:
+	Rscript code/scripts/processing.R
 
 # This target will run the script eda-script.R. This will output eda-out.txt which contains exploratory information and eda-correlation-matrix.txt. For this reason, we made two separate targets with the two output files.
 
