@@ -51,11 +51,11 @@ lasso_full= glmnet(as.matrix(scaled_colleges[full_nona,-114]), as.matrix(scaled_
 
 
 # save to RData
-save(lasso_train, lasso_best, lasso_tMSE, lasso_full, file = "data/Lasso-Regression.RData")
+save(lasso_train, lasso_best, lasso_tMSE, lasso_full, file = "data/RData-files/Lasso-Regression.RData")
 
 
 # save to textfile
-sink("data/lasso-output.txt")
+sink("data/outputs/lasso-output.txt")
 cat("\n Best Lamba:")
 lasso_best
 cat("\n Lasso test MSE:")
