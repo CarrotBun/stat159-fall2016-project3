@@ -13,8 +13,6 @@ new_colleges_df <- cbind(temp_df, ADM_RATE = colleges_df$ADM_RATE)
 
 # scaling and centering
 scaled_colleges <- scale(new_colleges_df, center = TRUE, scale = TRUE)
-scaled_colleges <- scaled_colleges[ ,-1]
-
 
 # export scaled data
 write.csv(scaled_colleges, file = "data/datasets/scaled-colleges.csv", row.names = FALSE)
