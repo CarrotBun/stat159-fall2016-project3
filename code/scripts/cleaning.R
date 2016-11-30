@@ -44,6 +44,6 @@ data2014$Year = "2014"
 data <- rbind(data2008, data2009, data2010, data2011, data2012, data2013, data2014)
 data <- factor_this(data)
 
-save(data, file = "../datasets/colleges.RData" )
+save(data, file = "../RData-files/colleges.RData" )
 write.csv(data, file = "../datasets/colleges.csv")
 

@@ -16,5 +16,5 @@ scaled_colleges <- scale(new_colleges_df, center = TRUE, scale = TRUE)
 
 # export scaled data
 write.csv(scaled_colleges, file = "data/datasets/scaled-colleges.csv", row.names = FALSE)
-save(scaled_colleges, file = "data/datasets/scaled-colleges.RData")
+save(scaled_colleges, file = "data/RData-files/scaled-colleges.RData")
 
