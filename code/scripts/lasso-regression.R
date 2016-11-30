@@ -11,8 +11,8 @@ train_nona = complete.cases(train_set)
 source("code/scripts/Train-Test.R")
 
 grid = 10^seq(10, -2, length = 100)
-lasso_train = cv.glmnet(x = as.matrix(train_set[train_nona,1:83]), 
-                        y = as.vector(train_set[train_nona, 84]), 
+lasso_train = cv.glmnet(x = as.matrix(train_set[train_nona,1:113]), 
+                        y = as.vector(train_set[train_nona, 114]), 
                       intercept = FALSE,
                       standardize = FALSE, 
                       lambda = grid)
@@ -29,24 +29,24 @@ test_nona = complete.cases(test_set)
 
 ############################ prediction plot ###########################
 png("images/lasso-prediction-plot.png")
-plot(predict(lasso_train, as.matrix(test_set[test_nona, -84]), s = "lambda.min"), type = "l"
+plot(predict(lasso_train, as.matrix(test_set[test_nona, -114]), s = "lambda.min"), type = "l"
      , col = "red",main = "Predicted and Actual Admissions Rate", 
      ylab = "Normalized Admissions Rate")
 
-lines(test_set[test_nona, 84], col = "black")
+lines(test_set[test_nona, 114], col = "black")
 
 legend(0, 3, legend = c("Predicted", "Actual"), fill = c("red", "black"), bty = "n")
 dev.off()
 
 
-lasso_pred = predict(lasso_train, as.matrix(test_set[test_nona, -84]), s = lasso_best)
+lasso_pred = predict(lasso_train, as.matrix(test_set[test_nona, -114]), s = lasso_best)
 
 # test MSE
-lasso_tMSE = mean((lasso_pred - test_set[test_nona, 84])^2) 
+lasso_tMSE = mean((lasso_pred - test_set[test_nona, 114])^2) 
 
 # refit model on full data set
 full_nona = complete.cases(scaled_colleges)
-lasso_full= glmnet(as.matrix(scaled_colleges[full_nona,-84]), as.matrix(scaled_colleges[full_nona, 84]), 
+lasso_full= glmnet(as.matrix(scaled_colleges[full_nona,-114]), as.matrix(scaled_colleges[full_nona, 84]), 
                         intercept = FALSE, standardize = FALSE, lambda = lasso_best)
 
 
