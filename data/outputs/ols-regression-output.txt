@@ -1,7 +1,7 @@
 MSE of OLS Regression
+[1] 0.4476179
 
 Coefficients of Full Model using OLS Regression
-[1] 0.4335985
     (Intercept)        STABBRAL        STABBRAR        STABBRAZ        STABBRCA        STABBRCO 
    -0.441653107     0.155866046     0.045148928     0.073396235    -0.016207443     0.067496544 
        STABBRCT        STABBRDC        STABBRDE        STABBRFL        STABBRGA        STABBRHI 
