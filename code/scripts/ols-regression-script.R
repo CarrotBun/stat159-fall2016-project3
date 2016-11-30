@@ -23,21 +23,27 @@ step(ols_reg)
 n <- nrow(train_set2)
 step(ols_reg, k = log(n))
 
-lm_1 <- lm(ADM_RATE ~ STABBRAL + STABBRAR + STABBRAZ + STABBRCO + 
-             STABBRCT + STABBRDC + STABBRFL + STABBRGA + STABBRIA + STABBRID + 
-             STABBRIL + STABBRIN + STABBRLA + STABBRMA + STABBRMD + STABBRME + 
-             STABBRMI + STABBRMN + STABBRMO + STABBRMT + STABBRNC + STABBRNE + 
-             STABBRNH + STABBRNJ + STABBRNM + STABBRNV + STABBRNY + STABBROH + 
-             STABBROR + STABBRPA + STABBRRI + STABBRSC + STABBRSD + STABBRTN + 
-             STABBRTX + STABBRUT + STABBRVA + STABBRVI + STABBRVT + STABBRWA + 
-             STABBRWI + STABBRWV + ZIP + UGDS_BLACK + UGDS_2MOR + UGDS_WOMEN + 
-             MARRIED + FAMINC + MN_EARN_WNE_P10 + SATVR25 + SATMT25 + 
-             SATMT75 + SATWR25 + SATWR75 + completion + transfer + CCUGPROF, 
+lm_1 <- lm(ADM_RATE ~ UGDS + UGDS_BLACK + UGDS_2MOR + AGE_ENTRY + 
+             UGDS_WOMEN + FIRST_GEN + FAMINC + MN_EARN_WNE_P10 + ST_FIPS6 + 
+             ST_FIPS9 + ST_FIPS10 + ST_FIPS11 + ST_FIPS12 + ST_FIPS13 + 
+             ST_FIPS15 + ST_FIPS17 + ST_FIPS20 + ST_FIPS21 + ST_FIPS24 + 
+             ST_FIPS25 + ST_FIPS29 + ST_FIPS30 + ST_FIPS34 + ST_FIPS35 + 
+             ST_FIPS36 + ST_FIPS37 + ST_FIPS39 + ST_FIPS40 + ST_FIPS48 + 
+             ST_FIPS50 + ST_FIPS53 + ST_FIPS54 + ST_FIPS78 + SATVR25 + 
+             SATMT25 + SATMT75 + SATWR25 + SATWR75 + completion + transfer + 
+             LOCALE23 + LOCALE31 + LOCALE32 + LOCALE33 + CCUGPROF5 + CCUGPROF6 + 
+             CCUGPROF7 + CCUGPROF8 + CCUGPROF9 + CCUGPROF10 + CCUGPROF11 + 
+             CCUGPROF12 + CCUGPROF13 + CCUGPROF14 + CCUGPROF15 + Year2011, 
            data = train_set2)
-lm_2 <- lm(ADM_RATE ~ STABBRAL + STABBRIN + STABBRME + STABBRMT + 
-             STABBRNM + STABBROH + STABBRPA + STABBRVI + STABBRVT + STABBRWA + 
-             UGDS_BLACK + FAMINC + MN_EARN_WNE_P10 + SATVR25 + SATWR25 + 
-             completion + transfer + CCUGPROF, data = train_set2)
+
+lm_2 <- lm(ADM_RATE ~ UGDS_BLACK + UGDS_WOMEN + FAMINC + ST_FIPS6 + 
+             ST_FIPS10 + ST_FIPS12 + ST_FIPS20 + ST_FIPS21 + ST_FIPS24 + 
+             ST_FIPS25 + ST_FIPS30 + ST_FIPS34 + ST_FIPS35 + ST_FIPS36 + 
+             ST_FIPS37 + ST_FIPS50 + ST_FIPS53 + ST_FIPS54 + ST_FIPS78 + 
+             SATVR25 + SATMT25 + SATMT75 + SATWR75 + completion + transfer + 
+             CCUGPROF5 + CCUGPROF6 + CCUGPROF7 + CCUGPROF8 + CCUGPROF9 + 
+             CCUGPROF10 + CCUGPROF11 + CCUGPROF12 + CCUGPROF13 + CCUGPROF14 + 
+             CCUGPROF15, data = train_set2)
 
 #Now we calculate the cross validation scores for each of these two models to determine which is better at predicting. 
 cv.scores = rep(NA, 2)
