@@ -54,15 +54,16 @@ cv.scores[2] = sum((lm_2$residuals^2)/((1 - influence(lm_2)$hat)^2))
 which.min(cv.scores)
 
 #In this case lm_1 is better. 
-lm1_indx <- match(c("STABBRAL", "STABBRAR", "STABBRAZ", "STABBRCO", "STABBRCT", "STABBRDC", "STABBRFL",
-                    "STABBRGA", "STABBRIA", "STABBRID", "STABBRIL", "STABBRIN", "STABBRLA", "STABBRMA",
-                    "STABBRMD", "STABBRME", "STABBRMI", "STABBRMN", "STABBRMO", "STABBRMT", "STABBRNC", 
-                    "STABBRNE", "STABBRNH", "STABBRNJ", "STABBRNM", "STABBRNV", "STABBRNY", "STABBROH",
-                    "STABBROR", "STABBRPA", "STABBRRI", "STABBRSC", "STABBRSD", "STABBRTN", "STABBRTX",
-                    "STABBRUT", "STABBRVA", "STABBRVI", "STABBRVT", "STABBRWA", "STABBRWI", "STABBRWV", 
-                    "ZIP", "UGDS_BLACK", "UGDS_2MOR", "UGDS_WOMEN", "MARRIED", "FAMINC", "MN_EARN_WNE_P10",
-                    "SATVR25", "SATMT25", "SATMT75", "SATWR25", "SATWR75", "completion", "transfer", 
-                    "CCUGPROF"), names(test_set2))
+lm1_indx <- match(c("UGDS", "UGDS_BLACK", "UGDS_2MOR", "AGE_ENTRY", "UGDS_WOMEN", "FIRST_GEN",
+                    "FAMINC", "MN_EARN_WNE_P10", "ST_FIPS6", "ST_FIPS9", "ST_FIPS10", "ST_FIPS11", 
+                    "ST_FIPS12", "ST_FIPS13", "ST_FIPS15", "ST_FIPS17", "ST_FIPS20", "ST_FIPS21",
+                    "ST_FIPS24", "ST_FIPS25", "ST_FIPS29", "ST_FIPS30", "ST_FIPS34", "ST_FIPS35", 
+                    "ST_FIPS36", "ST_FIPS37", "ST_FIPS39", "ST_FIPS40", "ST_FIPS48", "ST_FIPS50", 
+                    "ST_FIPS53", "ST_FIPS54", "ST_FIPS78", "SATVR25", "SATMT25", "SATMT75", 
+                    "SATWR25", "SATWR75", "completion", "transfer", "LOCALE23", "LOCALE31", 
+                    "LOCALE32", "LOCALE33", "CCUGPROF5", "CCUGPROF6", "CCUGPROF7", "CCUGPROF8", 
+                    "CCUGPROF9", "CCUGPROF10", "CCUGPROF11", "CCUGPROF12", "CCUGPROF13", 
+                    "CCUGPROF14", "CCUGPROF15", "Year2011"), names(test_set2))
 
 #Calculating MSE 
 ols_matrix_new <- test_set2[ ,lm1_indx]
