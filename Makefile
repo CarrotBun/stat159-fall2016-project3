@@ -9,7 +9,7 @@ reprnw = report/report.Rnw
 reppdf = report/report.pdf
 sections = report/sections/*
 
-.PHONY: all data cleaning processing eda session traintest ridge ols
+.PHONY: all data cleaning processing eda session traintest ridge ols slides lasso pcr plsr regressions report
 
 all: data cleaning processing
 
@@ -25,13 +25,6 @@ cleaning:
 
 processing:
 	Rscript code/scripts/processing.R
-
-# This target will output session-info.txt. 
-session: session-info.txt
-
-# This target allocates a target file for the output of sesison.sh
-session-info.txt: $(codescr)/session.sh
-	bash $(codescr)/session.sh
 
 # This target takes the scaled data set and creates train and test sets. 
 traintest: data/RData-files/train-test-sets.RData
@@ -50,7 +43,6 @@ $(dataout)/eda-output.txt: $(codescr)/eda-script.R
 # This target is for the eda-correlation-matrix.txt output. 
 $(dataout)/eda-correlation-matrix.txt: $(codescr)/eda-script.R
 	Rscript $(codescr)/eda-script.R 
-
 
 # This target will run the script ols-regression-script.R which will run the OLS regression analysis. There are two data outputs for this analysis, ols-regression-output.txt and  ols-regression.RData which contain information about the regression analysis. 
 ols: $(dataout)/ols-regression-output.txt $(dataR)/ols-regression.RData
