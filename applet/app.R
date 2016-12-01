@@ -44,6 +44,16 @@ varnames <- list("Admission Rate" = "avgAdmRate",
 ui <- fluidPage(
    titlePanel("College Admissions"),
    
+   tabsetPanel(
+     tabPanel("Plot", plotOutput("statePlot")), 
+     tabPanel("Summary", verbatimTextOutput("summary")), 
+     tabPanel("Table", tableOutput("table")),
+     tabPanel("Suggestions", verbatimTextOutput("suggestions")),
+     tabPanel("Comparisons", tableOutput("comparisons"))
+   ),
+   
+   h3("Simple School Lookup"),
+   
    fluidRow(
      column(3,
             h4("Attribute Filter"),
@@ -66,14 +76,26 @@ ui <- fluidPage(
                         choices = varnames)
      )
    ),
-   
-   tabsetPanel(
-     tabPanel("Plot", plotOutput("statePlot")), 
-     tabPanel("Summary", verbatimTextOutput("summary")), 
-     tabPanel("Table", tableOutput("table"))
+   br(),
+   h3("School Improvement Suggestion"),
+   br(),
+   fluidRow(
+     column(3,
+            selectInput("selTschool",
+                        label = "Pick Target School", 
+                        choices = unique(college_data$OPEID))
+     ),
+     column(4, offset = 1,
+            selectInput("selCvar", multiple = TRUE,
+                        label = "Select Focus Factors", 
+                        choices = varnames)
+     ),
+     column(4,
+            selectInput("selReg",
+                        label = "Regression Method", 
+                        choices = c("Ridge", "Lasso", "PCA", "PLSR"))
+     )
    )
-   
-   
 )
 
 # Define server logic required to draw a histogram
@@ -115,6 +137,15 @@ server <- function(input, output) {
     
   })
   
+  target_school <- reactive({
+    filter(college_data, OPEID == input$selTschool)
+  })
+  
+  suggest_data <- reactive({
+      filter(college_data, ADM_RATE >= target_school()$ADM_RATE)[,c("OPEID","INSTNM", "CITY","STABBR","ZIP", input$selCvar)]
+  })
+  
+  
   output$statePlot <- renderPlot({
     ggplot(data()) + geom_point(aes(x = data()[,input$selGeomX], 
                                     y = data()[,input$selGeomY])) +
@@ -126,9 +157,16 @@ server <- function(input, output) {
   })
   
   output$table <- renderTable({
-    data()[,c("INSTNM", "CITY","STABBR","ZIP", input$selTvar)]
+    data()[,c("OPEID","INSTNM", "CITY","STABBR","ZIP", input$selTvar)]
   }, hover = TRUE)
   
+  output$suggestions <- renderPrint({
+    
+  })
+  
+  output$comparsions <- renderTable({
+    suggest_data()
+  })
 }
 
 # Run the application 
