@@ -1,0 +1,30 @@
+---
+title: "College Admission Findings"
+author: "The Four Leaf Clever"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Background
+
+## Introduction
+
+## Data
+
+
+## Method - Models 
+To find the best model for prediction, following regression models were considered:
+
+- Ordinary Least Squares Regression (OLS)
+- Ridge Regression (RR)
+- Lasso Regression (LR)
+- Principal Components Regression (PCR)
+- Partial Least Squares Regression (PLSR)
+
+
+# Analysis 
+
+## Recommendations
