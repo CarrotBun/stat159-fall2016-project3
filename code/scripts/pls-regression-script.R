@@ -4,11 +4,19 @@ load('data/RData-files/train-test-sets.RData')
 scaled_colleges <- read.csv('data/datasets/scaled-colleges.csv')
 scaled_colleges$X <- NULL
 
+#removing the NA values from the dataset
+train_nona <- complete.cases(train_set)
+train_set2 <- train_set[train_nona, ]
+test_nona <- complete.cases(test_set)
+test_set2 <- test_set[test_nona, ]
+colleges_nona <- complete.cases(scaled_colleges)
+scaled_colleges2 <- scaled_colleges[colleges_nona, ]
+
 #setting a random seed to run the ten-cross validation 
 set.seed(27182)
 
 #fitting a partial least squares regression to the training data: 
-cv_pls <- plsr(ADM_RATE ~ ., data = train_set, validation = 'CV')
+cv_pls <- plsr(ADM_RATE ~ ., data = train_set2, validation = 'CV')
 
 #finding the "best" model which looks at the cross validated models
 lambda_min_pls <- which.min(cv_pls$validation$PRESS)
@@ -19,14 +27,14 @@ validationplot(cv_pls, val.type = 'MSEP')
 dev.off()
 
 #Using the model above to test using the test data set. 
-pls_predictions <- predict(cv_pls, newdata = test_set, ncomp = lambda_min_pls)
+pls_predictions <- predict(cv_pls, newdata = test_set2, ncomp = lambda_min_pls)
 
 #Finding the MSE of the test data model fit. 
-pls_mse <- mean((pls_predictions-test_set$ADM_RATE)^2)
+pls_mse <- mean((pls_predictions-test_set2$ADM_RATE)^2)
 
 #Now we find the official coefficents by using the model calculated above on the full 
 #data set
-pls_fit <- plsr(ADM_RATE ~ ., data = scaled_colleges, ncomp = lambda_min_pls)
+pls_fit <- plsr(ADM_RATE ~ ., data = scaled_colleges2, ncomp = lambda_min_pls)
 
 #finding the official coefficients: 
 pls_coef_full <- coef(pls_fit)
