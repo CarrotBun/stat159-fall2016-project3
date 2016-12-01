@@ -1,0 +1,13 @@
+# Analysis
+
+##Ridge Regression 
+When doing ridge regression, we started by looking at a ten-fold cross-validation. From cross validation, we were able to find the best model, which included finding our $\lambda$ or tuning variable. In order to complete cross validation, we first had to find the rows of information that contained complete entries, meaning that there is an input for every single column. We accomplished this by using the function complete.cases. Complete.cases creates a vector of true and false values, true when the row does not contain NAs and false when the row does have NAs. I was then able to subset my datafrme using this vector and run ridge regression with only the complete cases. 
+
+In the plot *MSE Plot of Ridge Regression*, it shows the relationship between MSE and log($\lambda$).
+
+```{r, fig.width = 5, fig.height = 3, echo=FALSE, fig.cap= 'MSE Plot of Ridge Regression', message = FALSE, fig.align = "center"}
+ridge_plot<- readPNG('../images/cv-ridge-mse-plot.png')
+grid.raster(ridge_plot)
+```
+
+From running our cross-validation on the train data set, we find that $\lambda$ = `r lambda_min_ridge`. Additionally, the mean square error (MSE) is `r ridge_MSE`. 
