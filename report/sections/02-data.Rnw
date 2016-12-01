@@ -1,0 +1,42 @@
+#Data
+
+For our project, we are working with data from _College Scorecard_. A link to this website can be found [here.](https://collegescorecard.ed.gov). _College Scorecard_ was created to help students find schools that best fit their needs and goals. The way that the raw information is presented is split apart by academic year and contains many different variables. So, the first thing that we had to do was select the columns of variables that we wanted to look at further for the years we wanted and make a new file for that. We called this file **colleges.csv**.
+
+In colleges.csv, we have many different columns. The columns and what they stand for are:
+
+*OPEID: Office of Post Secondary Education ID of Institution
+*INSTNM: Institution Name
+*CITY: City
+*STABBR: State Abbreviation
+*ZIP: Zip Code
+*UGDS: Undergraduate Student Size
+*UGDS_WHITE: Percentage of White Undergraduates 
+*UGDS_BLACK: Percentage of Black Undergraduates
+*UGDS_HISP: Percentage of Hispanic Undergraduates
+*UGDS_ASIAN: Percentage of Asian Undergraduates
+*UGDS_AIAN: Percentage of American Indian/Alaska Native Undergraduates 
+*UGDS_NHPI: Percentage of Native Hawaiian/Pacific Islander Undergraduates
+*UGDS_2MOR: Percentage of Two or More Races Undergraduates
+*UGDS_NRA: Percentage of Non-Resident Alien Undergraduates
+*UGDS_UNKN: Percentage of Unknown Race Undergraduates
+*AGE_ENTRY: Average Age of Undergraduates when Entering Institution 
+*UGDS_WOMEN: Percentage of Women Undergraduates
+*MARRIED: Percentage of Married Undergraduates
+*FIRST_GEN: Percentage of First Generation College Students
+*FAMINC: Average Family Income
+*MN_EARN_WNE_P10: Average Wage 10 Years After Graduating From College
+*ST_FIPS: State Codes
+*ADM_RATE: Admission Rates (in percentages)
+*SATVR25: Average SAT Verbal 25th Percentile Score
+*SATVR75: Average SAT Verbal 75th Percentile Score
+*SATMT25: Average SAT Math 25th Percentile Score
+*SATMT75: Average SAT Math 75th Percentile Score
+*SATWR25: Average SAT Writing 25th Percentile Score
+*SATWR75: Average SAT Writing 25th Percentile Score
+*completion: Completion Rates
+*transfer: Transfer Rates
+*LOCALE: Setting (City, Suburb, Town, or Rural)
+*CCUGPROF: Carnegie Classification Ungergraduate Profile (2 year vs 4 Year institution)
+*Year: Year of Dataset that Information Originally Came From
+
+From college.csv, we made a data set called **scaled-colleges.csv**. All of the variables in scaled-colleges.csv are the same as those in college.csv, but we converted factors (qualitative variables) into dummy variables, centered the mean, and standardized all of the data. Since, we standardized the data, this makes our data more comparable because all of our variables now on comparable scales. This is really important because our $\beta$ will be different depending on the scale that the variable is measured in. By centering and standardizing, we will not favor any coefficient. Ultimately, this will help us with our regression analysis so that we can find the most accurate model and have the best predictions possible.
