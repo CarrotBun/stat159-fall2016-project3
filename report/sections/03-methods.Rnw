@@ -6,9 +6,11 @@ output: pdf_document
 ###Standardization  
 The colleges information data contains data measured in different scales such as admissions rate versus age (which are on very different scales). To prevent any biased weighting, we want to standardize the information before modeling.  
 
-First, we create inidicator variables for the qualitative variables discussed in the introduction. Next, we want to standardize the absolute quantitites to relative quantities (mean centering).    
+First, we created inidicator variables for the qualitative variables discussed in the introduction. Next, we want to standardize the absolute quantitites to relative quantities (mean centering).    
 
 One reason to standardize variables is to have comparable scales. When you perform a regression analysis, the value of the computed coefficients will depend on the measurement scale of the associated predictors.  
+
+In addition to standardizing, we removed all observations that have NA's.
 
 
 ###Regression Models (Technical Explanation)  
