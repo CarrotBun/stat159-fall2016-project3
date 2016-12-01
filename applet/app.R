@@ -1,6 +1,8 @@
 
 library(shiny)
 library(ggplot2)
+library(dplyr)
+library(glmnet)
 
 #setwd("~/stat159/project3/applet/")
 college_data <- read.csv("../data/datasets/colleges.csv")
@@ -41,6 +43,38 @@ varnames <- list("Admission Rate" = "avgAdmRate",
                 "Race - Native Hawaiian/Pacific Islander" = "avgNHPI",
                 "Race - 2 or more races" = "avg2MOR",
                 "Race - Nonresident Alien" = "avgForeign")
+
+avgAllVars <- function(table){
+  summarize(
+    group_by(
+      table,
+      OPEID, INSTNM, CITY, STABBR, ZIP
+    ),
+    avgSize = mean(UGDS, na.rm = TRUE),
+    avgWhite = mean(UGDS_WHITE, na.rm = TRUE),
+    avgBlack = mean(UGDS_BLACK, na.rm = TRUE),
+    avgHisp = mean(UGDS_HISP, na.rm=TRUE),
+    avgAsian = mean(UGDS_ASIAN, na.rm=TRUE),
+    avgAIAN = mean(UGDS_AIAN, na.rm=TRUE),
+    avgNHPI = mean(UGDS_ASIAN, na.rm=TRUE),
+    avg2MOR = mean(UGDS_2MOR, na.rm=TRUE),
+    avgForeign = mean(UGDS_NRA, na.rm=TRUE),
+    avgAgeEntry = mean(AGE_ENTRY, na.rm =TRUE),
+    avgWomen = mean(UGDS_WOMEN, na.rm = TRUE),
+    avgMarried = mean(MARRIED, na.rm =TRUE),
+    avgFirstGen = mean(FIRST_GEN, na.rm = TRUE),
+    avgAdmRate = mean(ADM_RATE, na.rm = TRUE),
+    avgSATVR25 = mean(SATVR25, na.rm=TRUE),
+    avgSATVR75 = mean(SATVR75, na.rm=TRUE),
+    avgSATMT25 = mean(SATMT25, na.rm=TRUE),
+    avgSATMT75 = mean(SATMT75, na.rm=TRUE),
+    avgSATWR25 = mean(SATWR25, na.rm=TRUE),
+    avgSATWR75 = mean(SATWR75, na.rm =TRUE),
+    avgFamilyInc = mean(FAMINC, na.rm = TRUE),
+    avgCompletion = mean(UGDS_WOMEN, na.rm = TRUE),
+    avgTransfer = mean(MARRIED, na.rm =TRUE)
+  )
+}
 ui <- fluidPage(
    titlePanel("College Admissions"),
    
@@ -68,12 +102,16 @@ ui <- fluidPage(
                                choices = varnames)
      ),
      column(4,
+            h4("Plot Components"),
             selectInput("selGeomX",
-                        label = "Graph X variable", 
+                        label = "X variable", 
                         choices = varnames),
             selectInput("selGeomY",
-                        label = "Graph Y variable", 
-                        choices = varnames)
+                        label = "Y variable", 
+                        choices = varnames),
+            selectInput("selGeomLine",
+                        label = "Include linear regression line?",
+                        choices = c("Yes" = TRUE,  "No" = FALSE), selected = FALSE)
      )
    ),
    br(),
@@ -91,9 +129,9 @@ ui <- fluidPage(
                         choices = varnames)
      ),
      column(4,
-            selectInput("selReg",
-                        label = "Regression Method", 
-                        choices = c("Ridge", "Lasso", "PCA", "PLSR"))
+            numericInput("SizeRange", 
+                         label ="Size Range", 
+                         value = 1000)
      )
    )
 )
@@ -101,55 +139,35 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
   data <- reactive({
-    summarize(
-      group_by(
-        filter(college_data, STABBR == input$selState,
-           ADM_RATE >= input$ARRange[1], 
-           ADM_RATE <= input$ARRange[2],
-           UGDS >= input$SizeRange[1],
-           UGDS <= input$SizeRange[2]),
-      OPEID, INSTNM, CITY, STABBR, ZIP
-      ),
-      avgSize = mean(UGDS, na.rm = TRUE),
-      avgWhite = mean(UGDS_WHITE, na.rm = TRUE),
-      avgBlack = mean(UGDS_BLACK, na.rm = TRUE),
-      avgHisp = mean(UGDS_HISP, na.rm=TRUE),
-      avgAsian = mean(UGDS_ASIAN, na.rm=TRUE),
-      avgAIAN = mean(UGDS_AIAN, na.rm=TRUE),
-      avgNHPI = mean(UGDS_ASIAN, na.rm=TRUE),
-      avg2MOR = mean(UGDS_2MOR, na.rm=TRUE),
-      avgForeign = mean(UGDS_NRA, na.rm=TRUE),
-      avgAgeEntry = mean(AGE_ENTRY, na.rm =TRUE),
-      avgWomen = mean(UGDS_WOMEN, na.rm = TRUE),
-      avgMarried = mean(MARRIED, na.rm =TRUE),
-      avgFirstGen = mean(FIRST_GEN, na.rm = TRUE),
-      avgAdmRate = mean(ADM_RATE, na.rm = TRUE),
-      avgSATVR25 = mean(SATVR25, na.rm=TRUE),
-      avgSATVR75 = mean(SATVR75, na.rm=TRUE),
-      avgSATMT25 = mean(SATMT25, na.rm=TRUE),
-      avgSATMT75 = mean(SATMT75, na.rm=TRUE),
-      avgSATWR25 = mean(SATWR25, na.rm=TRUE),
-      avgSATWR75 = mean(SATWR75, na.rm =TRUE),
-      avgFamilyInc = mean(FAMINC, na.rm = TRUE),
-      avgCompletion = mean(UGDS_WOMEN, na.rm = TRUE),
-      avgTransfer = mean(MARRIED, na.rm =TRUE)
-    )
+    avgAllVars(filter(college_data, STABBR == input$selState,
+                      ADM_RATE >= input$ARRange[1], 
+                      ADM_RATE <= input$ARRange[2],
+                      UGDS >= input$SizeRange[1],
+                      UGDS <= input$SizeRange[2]))
     
   })
   
   target_school <- reactive({
-    filter(college_data, OPEID == input$selTschool)
+    avgAllVars(
+        filter(college_data, OPEID == input$selTschool))
   })
   
   suggest_data <- reactive({
-      filter(college_data, ADM_RATE >= target_school()$ADM_RATE)[,c("OPEID","INSTNM", "CITY","STABBR","ZIP", input$selCvar)]
+      avgAllVars(filter(college_data, ADM_RATE >= target_school()$avgAdmRate,
+             UGDS >= target_school()$avgSize-input$SizeRange,
+             UGDS <= target_school()$avgSize+input$SizeRange))[,c("OPEID","INSTNM", "CITY","STABBR","ZIP", input$selCvar)]
   })
   
   
   output$statePlot <- renderPlot({
-    ggplot(data()) + geom_point(aes(x = data()[,input$selGeomX], 
+    plotSimple <- ggplot(data()) + geom_point(aes(x = data()[,input$selGeomX], 
                                     y = data()[,input$selGeomY])) +
       labs(x=input$selGeomX, y= input$selGeomY )
+    if (input$selGeomLine){
+      plotSimple <- plotSimple + stat_smooth(method = "lm", col = "navy")
+    }
+    
+    plotSimple
   })
   
   output$summary <- renderPrint({
@@ -164,8 +182,9 @@ server <- function(input, output) {
     
   })
   
-  output$comparsions <- renderTable({
-    suggest_data()
+  output$comparisons <- renderTable({
+    sample_vec <- sample(1:nrow(suggest_data()),10, replace= TRUE)
+    suggest_data()[sample_vec,]
   })
 }
 
