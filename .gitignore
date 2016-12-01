@@ -1,4 +1,8 @@
 .DS_Store
-data/datasets/College.zip
+data/datasets/college.zip
 data/raw/
+
 .Rhistory
+.Rapp
+.Rapp.history
+

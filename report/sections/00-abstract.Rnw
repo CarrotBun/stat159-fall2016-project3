@@ -1,0 +1,25 @@
+```{r, echo = FALSE, include = FALSE}
+# Loading in the necessary data files. 
+load('../data/RData-files/ols-regression.RData')
+load('../data/RData-files/ridge-regression.RData')
+load('../data/RData-files/lasso-regression.RData')
+load('../data/RData-files/pc-regression.RData')
+load('../data/RData-files/pls-regression.RData')
+scaled_credit <- read.csv('../data/datasets/scaled-credit.csv')
+
+## the following line is added so that this s4 class object can be coerced into type matrix in the make file.
+ridge_coef_full
+
+# Loading in required packages.
+library(xtable)
+library(png)
+library(grid)
+library(ggplot2)
+library(reshape)
+library(Matrix)
+```
+#Objective
+Our goal for this project is to help our client, who are group of administrators trying to make their school more competitive. In order to achieve this goal, we will be making a shiny app that will help us pin point which areas our client can improve on to lower their admissions rates. In this app, we will be able to give our clients a list of schools that have similar attributes to them. Additionally, we will be able to compare our client's school's characteristics with other schools that are similar, but have a lower admission rate to help see what areas they can improve on to lower the admission rate. Finally, we will be able to predict our client's new admission rates based on a regression equation that we have derived. 
+
+
+
