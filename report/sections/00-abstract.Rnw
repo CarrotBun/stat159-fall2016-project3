@@ -1,4 +1,26 @@
-```{r, echo = FALSE, include = FALSE}
+\documentclass{article}
+\usepackage[unicode=true,pdfusetitle,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=2,
+ breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
+ {hyperref}
+\usepackage{graphicx}
+\hypersetup{
+ pdfstartview={XYZ null null 1}}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+<<setup, include=FALSE, cache=FALSE, echo = FALSE>>=
+library(knitr)
+# set global chunk options
+opts_chunk$set(fig.path='figure/minimal-', fig.align='center', fig.show='hold')
+options(formatR.arrow=TRUE,width=90)
+@
+
+\title{College Admissions Findings}
+
+\author{Erica Wong, Elly Wang, Lily Li, Bryana Gutierrez}
+
+\maketitle
+<<r, echo = FALSE, include = FALSE>>=
 # Loading in the necessary data files. 
 load('../data/RData-files/ols-regression.RData')
 load('../data/RData-files/ridge-regression.RData')
@@ -17,8 +39,9 @@ library(grid)
 library(ggplot2)
 library(reshape)
 library(Matrix)
-```
-#Objective
+@
+
+\section{Objective}
 Our goal for this project is to help our client, who are group of administrators trying to make their school more competitive. In order to achieve this goal, we will be making a shiny app that will help us pin point which areas our client can improve on to lower their admissions rates. In this app, we will be able to give our clients a list of schools that have similar attributes to them. Additionally, we will be able to compare our client's school's characteristics with other schools that are similar, but have a lower admission rate to help see what areas they can improve on to lower the admission rate. Finally, we will be able to predict our client's new admission rates based on a regression equation that we have derived. 
 
 
