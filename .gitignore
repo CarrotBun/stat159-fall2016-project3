@@ -2,3 +2,5 @@
 data/datasets/college.zip
 data/raw/
 .Rhistory
+.Rapp
+.Rapp.history
