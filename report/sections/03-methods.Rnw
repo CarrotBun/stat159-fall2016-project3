@@ -4,11 +4,13 @@ output: pdf_document
 ## Methods  
 
 ###Standardization  
-The dataset includes categories measured in different scales such as admissions rate and age (which are on very different scales). In addition, to prevent any biased weighting, we want to standardize the dataset before building any models upon it.  
+The colleges information data contains data measured in different scales such as admissions rate versus age (which are on very different scales). To prevent any biased weighting, we want to standardize the information before modeling.  
 
-First, we create inidicator variables for the qualitative variables discussed in the introduction. Next, we want to standardize the absolute quantitites to relative quantities (mean centering). This means that each variable will have mean zero, and standard deviation one.  
+First, we created inidicator variables for the qualitative variables discussed in the introduction. Next, we want to standardize the absolute quantitites to relative quantities (mean centering).    
 
 One reason to standardize variables is to have comparable scales. When you perform a regression analysis, the value of the computed coefficients will depend on the measurement scale of the associated predictors.  
+
+In addition to standardizing, we removed all observations that have NA's.
 
 
 ###Regression Models (Technical Explanation)  
@@ -25,7 +27,7 @@ In vector form: $min \beta$ $||y-A\beta||^2_2 + \lambda||\beta||^2_2$
 
 A difference in behavior of RR is that as $\lambda$ increases, more weight is given to the second term in the minimization. This means that with a large $\lambda$, the $\beta$ will be small.  
 
-The main advantage of RR is that it takes multicollinearity into account and does automatics parameter selection. 
+The main advantage of RR is that it takes correlated parameters into account and does automatics parameter weighing. 
 
 ####*Lasso Regression (LR)*  
 LR is a variation of the minimization in OLS Regression but with a constraint of $||\beta||_1 < c$. With c, the constraint shape becomes a diamond and any pairs of $\beta$ will likely contain zeros. Unlike RR, there is no explicit form of $\beta$.
@@ -38,8 +40,6 @@ The main advantage of LR is that it performs both parameter shrinkage through fe
 PCR is based on principal component analysis. The goal of this method is to reduce the dimensions (created by the set of data points in n-dimensional space).  
 
 To do so, we want define a direction, the first principal component, that maximizes the the variability in the data set and set the second principal component perpendicular to this first principal component. As a result, each data point's coordinates will change to this new coordinate system.  
-
-Having dimensions with the greatest variance will maximize preservation of distances between the data points. It's important because physical distances also represent similarity.   
 
 ####*Partial Least Squares Regression (PLSR)*
 PLSR, similar to PCR, is also a dimensionality reduction method. While PCR finds hyperplanes of maximum variance between the predictors and responses, PLSR projects the predicted variables and the observable variables into a new space.   

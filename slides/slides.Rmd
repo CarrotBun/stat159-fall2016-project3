@@ -8,14 +8,14 @@ output: ioslides_presentation
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
-# Background
+# Background  
 
-## Introduction
+## Introduction  
 
-## Data
+## Data  
 
 
-## Method - Models 
+## Method - Models  
 To find the best model for prediction, following regression models were considered:
 
 - Ordinary Least Squares Regression (OLS)
@@ -25,6 +25,6 @@ To find the best model for prediction, following regression models were consider
 - Partial Least Squares Regression (PLSR)
 
 
-# Analysis 
+# Analysis  
 
-## Recommendations
+## Recommendations  
