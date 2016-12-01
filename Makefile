@@ -1,4 +1,4 @@
-dataset = data/datasets/College
+dataset = data/datasets/college
 rawData = data/raw
 extradata20 = $(wildcard data/raw/MERGED200*.csv)
 extradata19 = $(wildcard data/raw/MERGED19*.csv)
