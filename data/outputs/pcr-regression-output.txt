@@ -1,0 +1,163 @@
+Best Model's Lambda:
+[1] 98
+
+ Test MSE:
+[1] 0.4455302
+
+ Official Model and Coefficients:
+Data: 	X dimension: 1692 113 
+	Y dimension: 1692 1
+Fit method: svdpc
+Number of components considered: 98
+TRAINING: % variance explained
+          1 comps  2 comps  3 comps  4 comps  5 comps  6 comps  7 comps  8 comps  9 comps  10 comps
+X           7.863    12.12    15.44    18.26    20.88    23.42    25.88    28.07    30.18     32.26
+ADM_RATE   11.670    11.67    11.68    11.69    11.77    14.94    15.09    16.03    16.11     16.18
+          11 comps  12 comps  13 comps  14 comps  15 comps  16 comps  17 comps  18 comps  19 comps
+X            34.28     36.27     38.16     39.94     41.71     43.47     45.20     46.87     48.48
+ADM_RATE     17.45     19.46     19.59     20.07     20.10     20.14     20.57     21.24     21.36
+          20 comps  21 comps  22 comps  23 comps  24 comps  25 comps  26 comps  27 comps  28 comps
+X            50.04      51.6     53.12     54.59     56.04     57.47     58.83     60.15     61.43
+ADM_RATE     21.58      21.6     23.18     24.09     24.20     24.44     24.85     24.96     25.05
+          29 comps  30 comps  31 comps  32 comps  33 comps  34 comps  35 comps  36 comps  37 comps
+X            62.71     63.94     65.15     66.34     67.52     68.67     69.78     70.85     71.91
+ADM_RATE     25.23     25.29     25.31     26.13     27.30     27.30     27.41     27.43     27.93
+          38 comps  39 comps  40 comps  41 comps  42 comps  43 comps  44 comps  45 comps  46 comps
+X            72.94     73.95     74.92     75.87     76.79     77.69     78.58     79.42     80.26
+ADM_RATE     28.14     28.51     29.50     29.51     29.53     30.14     30.43     31.13     31.23
+          47 comps  48 comps  49 comps  50 comps  51 comps  52 comps  53 comps  54 comps  55 comps
+X            81.08     81.89     82.68     83.46     84.21     84.95     85.68     86.41     87.12
+ADM_RATE     31.24     31.47     31.54     32.67     32.68     32.91     33.09     33.28     33.30
+          56 comps  57 comps  58 comps  59 comps  60 comps  61 comps  62 comps  63 comps  64 comps
+X            87.79     88.44     89.07     89.65     90.22     90.79     91.36     91.88     92.37
+ADM_RATE     33.41     33.44     33.46     33.47     33.49     34.00     34.11     34.12     35.15
+          65 comps  66 comps  67 comps  68 comps  69 comps  70 comps  71 comps  72 comps  73 comps
+X            92.84     93.29     93.73     94.16     94.58     94.99     95.38     95.77     96.15
+ADM_RATE     35.15     35.17     35.43     35.43     35.47     35.54     35.68     36.06     36.29
+          74 comps  75 comps  76 comps  77 comps  78 comps  79 comps  80 comps  81 comps  82 comps
+X            96.52     96.88     97.19     97.47     97.74     97.99     98.22     98.44     98.65
+ADM_RATE     36.29     36.29     36.87     36.96     36.97     37.02     37.08     37.09     37.16
+          83 comps  84 comps  85 comps  86 comps  87 comps  88 comps  89 comps  90 comps  91 comps
+X            98.84     99.02     99.18     99.32     99.44     99.56     99.66     99.74     99.80
+ADM_RATE     37.31     37.37     37.37     37.58     38.67     38.91     40.44     40.44     40.59
+          92 comps  93 comps  94 comps  95 comps  96 comps  97 comps  98 comps
+X            99.85     99.88     99.91     99.93     99.95     99.97     99.98
+ADM_RATE     40.73     40.74     41.03     41.13     41.14     41.15     41.43
+
+, , 98 comps
+
+                     ADM_RATE
+UGDS             3.764851e-02
+UGDS_WHITE      -1.272117e-02
+UGDS_BLACK      -1.653602e-01
+UGDS_HISP        2.123305e-02
+UGDS_ASIAN      -2.037007e-02
+UGDS_AIAN        1.520397e-02
+UGDS_NHPI       -3.124927e-02
+UGDS_2MOR        3.935681e-02
+UGDS_NRA        -4.221031e-02
+UGDS_UNKN        2.534459e-03
+AGE_ENTRY        8.319462e-03
+UGDS_WOMEN       5.699629e-02
+MARRIED          7.918498e-02
+FIRST_GEN       -1.418947e-01
+FAMINC           2.428642e-01
+MN_EARN_WNE_P10 -7.946903e-02
+ST_FIPS2        -7.614447e-03
+ST_FIPS4         3.099851e-02
+ST_FIPS5        -3.941234e-03
+ST_FIPS6        -7.587148e-02
+ST_FIPS8         1.959819e-02
+ST_FIPS9        -2.424245e-02
+ST_FIPS10       -3.974075e-02
+ST_FIPS11       -1.740573e-02
+ST_FIPS12       -6.236923e-02
+ST_FIPS13       -8.873351e-03
+ST_FIPS15       -2.610509e-03
+ST_FIPS16        9.204368e-03
+ST_FIPS17       -6.213006e-03
+ST_FIPS18        4.167496e-02
+ST_FIPS19        4.021355e-02
+ST_FIPS20       -4.957810e-02
+ST_FIPS21       -5.812542e-02
+ST_FIPS22        8.506830e-03
+ST_FIPS23        4.269863e-02
+ST_FIPS24       -2.107950e-02
+ST_FIPS25       -3.691478e-02
+ST_FIPS26        2.580757e-02
+ST_FIPS27        7.376000e-03
+ST_FIPS28       -2.675294e-02
+ST_FIPS29       -3.125305e-02
+ST_FIPS30        1.898284e-02
+ST_FIPS31       -1.803112e-03
+ST_FIPS32        2.274276e-02
+ST_FIPS33        1.555132e-02
+ST_FIPS34       -3.009881e-04
+ST_FIPS35        7.409529e-02
+ST_FIPS36       -9.303907e-03
+ST_FIPS37       -3.393503e-02
+ST_FIPS38       -6.034651e-03
+ST_FIPS39        7.971369e-02
+ST_FIPS40       -1.630731e-02
+ST_FIPS41        2.205003e-03
+ST_FIPS42        4.278788e-02
+ST_FIPS44        4.035367e-03
+ST_FIPS45       -1.931095e-04
+ST_FIPS46        2.982184e-02
+ST_FIPS47       -1.151420e-02
+ST_FIPS48       -6.888069e-03
+ST_FIPS49        3.234853e-02
+ST_FIPS50        4.605198e-02
+ST_FIPS51        3.184547e-02
+ST_FIPS53        5.556182e-02
+ST_FIPS54       -2.526394e-02
+ST_FIPS55        3.619467e-02
+ST_FIPS56       -2.910400e-16
+ST_FIPS64        8.395479e-17
+ST_FIPS66        2.183729e-16
+ST_FIPS68       -7.741543e-17
+ST_FIPS72        1.073416e-16
+ST_FIPS78        2.155894e-02
+SATVR25         -1.658820e-01
+SATVR75          8.039663e-02
+SATMT25         -2.113425e-01
+SATMT75          1.616489e-01
+SATWR25         -1.514583e-01
+SATWR75         -1.944982e-01
+completion      -1.628479e-01
+transfer        -4.768783e-02
+LOCALE11         1.087207e-02
+LOCALE12         2.360148e-03
+LOCALE13         1.373655e-02
+LOCALE21        -5.157685e-03
+LOCALE22         1.123973e-02
+LOCALE23        -2.361213e-02
+LOCALE31        -1.282451e-02
+LOCALE32        -1.955407e-02
+LOCALE33         1.234690e-03
+LOCALE41        -3.913000e-03
+LOCALE42        -3.916639e-03
+LOCALE43         2.594416e-02
+CCUGPROF0        2.165105e-17
+CCUGPROF1        3.004595e-17
+CCUGPROF2        4.568024e-18
+CCUGPROF3       -5.054824e-02
+CCUGPROF4       -4.179168e-01
+CCUGPROF5        2.322960e-02
+CCUGPROF6        2.612297e-02
+CCUGPROF7        1.855487e-02
+CCUGPROF8        6.386009e-03
+CCUGPROF9        3.034219e-02
+CCUGPROF10       5.640018e-02
+CCUGPROF11       3.634387e-02
+CCUGPROF12       1.066356e-01
+CCUGPROF13       7.111377e-02
+CCUGPROF14       3.949931e-02
+CCUGPROF15       7.366017e-02
+Year2009        -1.142008e-02
+Year2010         0.000000e+00
+Year2011         9.889927e-03
+Year2012         2.355256e-03
+Year2013         0.000000e+00
+Year2014         0.000000e+00
+
