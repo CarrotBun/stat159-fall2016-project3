@@ -12,8 +12,8 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ## Introduction  
 Goals:  
-1. Predict admission rates and find most influenctial variables.
-2. Develop a Shiny Web App for college consulting agency to use for evaluating changes to make to influence college admissions.
+1. Predict admission rates and find most influenctial variables.  
+2. Develop a Shiny Web App for college consulting agency to use for evaluating changes to make to influence college admissions.  
 
 ## Data - Variables
 Source: CollegBoard  
