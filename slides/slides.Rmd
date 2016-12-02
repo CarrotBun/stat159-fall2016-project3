@@ -11,9 +11,23 @@ knitr::opts_chunk$set(echo = FALSE)
 # Background  
 
 ## Introduction  
+Goals:  
+1. Predict admission rates and find most influenctial variables.
+2. Develop a Shiny Web App for college consulting agency to use for evaluating changes to make to influence college admissions.
 
-## Data  
+## Data - Variables
+Source: CollegBoard  
+Some variables include:  
+- State
+- Undergraduate student size
+- Undergraduate student race
+- Marital status
+- Percentage of first generation college
+- Average family income
+- SATs  
 
+
+# Process  
 
 ## Method - Models  
 To find the best model for prediction, following regression models were considered:
@@ -22,9 +36,9 @@ To find the best model for prediction, following regression models were consider
 - Ridge Regression (RR)
 - Lasso Regression (LR)
 - Principal Components Regression (PCR)
-- Partial Least Squares Regression (PLSR)
+- Partial Least Squares Regression (PLSR)  
 
 
 # Analysis  
 
-## Recommendations  
+## Summary 
