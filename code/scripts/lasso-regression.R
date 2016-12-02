@@ -8,8 +8,6 @@ train_nona = complete.cases(train_set)
 
 
 # lasso regression
-source("code/scripts/Train-Test.R")
-
 grid = 10^seq(10, -2, length = 100)
 lasso_train = cv.glmnet(x = as.matrix(train_set[train_nona,1:113]), 
                         y = as.vector(train_set[train_nona, 114]), 
@@ -20,7 +18,7 @@ lasso_train = cv.glmnet(x = as.matrix(train_set[train_nona,1:113]),
 lasso_best = lasso_train$lambda.min
 
 # plot CV errors MSEP
-png("images/lasso-validation.png")
+png("images/cv-lasso-mse-plot.png")
 plot(lasso_train)
 dev.off()
 
@@ -51,11 +49,11 @@ lasso_full= glmnet(as.matrix(scaled_colleges[full_nona,-114]), as.matrix(scaled_
 
 
 # save to RData
-save(lasso_train, lasso_best, lasso_tMSE, lasso_full, file = "data/RData-files/Lasso-Regression.RData")
+save(lasso_train, lasso_best, lasso_tMSE, lasso_full, file = "data/RData-files/lasso-regression.RData")
 
 
 # save to textfile
-sink("data/outputs/lasso-output.txt")
+sink("data/outputs/lasso-regression-output.txt")
 cat("\n Best Lamba:")
 lasso_best
 cat("\n Lasso test MSE:")
@@ -63,6 +61,4 @@ lasso_tMSE
 cat("\n Official Coefficients")
 coef(lasso_full)
 sink()
-
-
 
