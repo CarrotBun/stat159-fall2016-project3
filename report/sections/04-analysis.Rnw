@@ -1,13 +1,52 @@
 # Analysis
 
-##Ridge Regression 
-When doing ridge regression, we started by looking at a ten-fold cross-validation. From cross validation, we were able to find the best model, which included finding our $\lambda$ or tuning variable. In order to complete cross validation, we first had to find the rows of information that contained complete entries, meaning that there is an input for every single column. We accomplished this by using the function complete.cases. Complete.cases creates a vector of true and false values, true when the row does not contain NAs and false when the row does have NAs. I was then able to subset my datafrme using this vector and run ridge regression with only the complete cases. 
+```{r echo = FALSE}
+load("../../data/RData-files/ridge-egression.RData")
+load("../../data/RData-files/Lasso-Regression.RData")
+load("../../data/RData-files/PCR-Regression.RData")
 
-In the plot *MSE Plot of Ridge Regression*, it shows the relationship between MSE and log($\lambda$).
+```
 
-```{r, fig.width = 5, fig.height = 3, echo=FALSE, fig.cap= 'MSE Plot of Ridge Regression', message = FALSE, fig.align = "center"}
-ridge_plot<- readPNG('../images/cv-ridge-mse-plot.png')
+## General
+In order to complete cross validation, we first had to find the rows of information that contained complete entries, meaning that there is an input for every single column. We accomplished this by using the function complete.cases. Complete.cases creates a vector of true and false values, true when the row does not contain NAs and false when the row does have NAs. Each regresion is then run on the parts of the train data that were complete.  
+
+
+##Ridge Regression  
+When doing ridge regression, we started by looking at a ten-fold cross-validation. From cross validation, we were able to find the best model, which included finding our lambda or tuning variable.
+
+Below is the *MSE Plot of Ridge Regression* which shows the relationship between MSE and log(lambda).
+
+```{r fig.width = 5, fig.height = 3, echo=FALSE, fig.cap= 'MSE Plot of Ridge Regression', message = FALSE, fig.align = "center"}
+ridge_plot = readPNG('../../images/cv-ridge-mse-plot.png')
 grid.raster(ridge_plot)
 ```
 
-From running our cross-validation on the train data set, we find that $\lambda$ = `r lambda_min_ridge`. Additionally, the mean square error (MSE) is `r ridge_MSE`. 
+From running our cross-validation on the train data set, we find that lambda is `r lambda_min_ridge`. Using this lambda and regression, we predicted the admissions rate from the test set of data and found the mean square error (MSE) is `r ridge_MSE`.   
+
+
+##Lasso Regression  
+To run lasso regression, we utilized the glmnet package. In order to find the best lambda value for the regression, we created an array of 100 lambda values from `r 10^-2` to `r 10^10` and run a 10-fold cross validation on all these lambda values. We then proceeded to find the minimum lambda, `r lasso_best`.  
+
+Below is the plot of *MSE vs. log(lambda) for Lasso Regression*.  
+
+```{r fig.width = 5, fig.height = 3, echo=FALSE, fig.cap= 'MSE Plot of Lasso Regression', message = FALSE, fig.align = "center"}
+lasso_plot = readPNG('../..images/lasso-validation.png')
+grid.raster(lasso_plot)  
+```
+Using this lambda and regression, we predicted the admissions rate from the test set of data and found the mean square error (MSE) is `r lasso_tMSE`.  
+
+
+##Principal Component Regression  
+In order to find the best lambda value for this regression, we utilized `pcr()` with the attribute of "validation" as "CV". The resulting best lambda is `r pcr_best`.   
+
+Below is the plot of *MSE vs. log(lambda) for PCR*.  
+
+```{r fig.width = 5, fig.height = 3, echo=FALSE, fig.cap= 'MSE Plot of PC Regression', message = FALSE, fig.align = "center"}
+lasso_plot = readPNG('../..images/pcr-validation.png')
+grid.raster(lasso_plot)  
+```
+Using this lambda and regression, we predicted the admissions rate from the test set of data and found the mean square error (MSE) is `r pcr_tMSE`.  
+
+
+
+
