@@ -1,4 +1,4 @@
-# Introduction
+\section{Introduction}
 
 In order to be able to predict the our client's admission rates and find out which variables are impactful, we first had to come up with a model via regression. We decided to look at many different methods of regression so that we would be able to compare mean-squared errors, and eventually pick the model that produces the lowest mean squared error. We looked at ordinary least squares (OLS), ridge, lasso, principal components, and partial least squares regression. With ordinary least squares we did model selection and cross validation to find the best OLS model. Ridge and lasso regression are shrinkage methods and principal components and partial least squares are reduction methods. The purpose of comparing the different types of methods is so we can find the best model possible. We want to be able to compare the models produced by all the methods so we will have prediction accuracy and proper model interpretation. 
 
