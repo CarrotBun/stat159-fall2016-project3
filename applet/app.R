@@ -5,8 +5,16 @@ library(dplyr)
 library(glmnet)
 
 #setwd("~/stat159/project3/applet/")
-college_data <- read.csv("../data/datasets/colleges.csv")
-college_scaled <- read.csv("../data/datasets/scaled-colleges.csv")
+
+load("../data/RData-files/Ridge-Regression.RData")
+load("../data/RData-files/scaled-colleges.RData")
+load("../data/RData-files/colleges.RData")
+
+source("../code/functions/cleaning-helpers.R")
+
+college_data <- factor_this(college_data)
+college_scaled <- scaled_colleges
+
 varlist <- list("Admission Rate" = 23, 
                 "Size" = 6, 
                 "Age at entry" = 16, 
@@ -83,7 +91,12 @@ ui <- fluidPage(
      tabPanel("Summary", verbatimTextOutput("summary")), 
      tabPanel("Table", tableOutput("table")),
      tabPanel("Suggestions", verbatimTextOutput("suggestions")),
-     tabPanel("Comparisons", tableOutput("comparisons"))
+     tabPanel("Comparisons", tableOutput("comparisons")),
+     tabPanel("Comparison Plots",
+              fluidRow(
+                column(8, plotOutput("targetPlot")),
+                column(12, plotOutput("compPlots"))
+              ))
    ),
    
    h3("Simple School Lookup"),
@@ -124,14 +137,20 @@ ui <- fluidPage(
                         choices = unique(college_data$OPEID))
      ),
      column(4, offset = 1,
-            selectInput("selCvar", multiple = TRUE,
-                        label = "Select Focus Factors", 
-                        choices = varnames)
-     ),
-     column(4,
+            h4("Similar School Criteria"),
             numericInput("SizeRange", 
                          label ="Size Range", 
-                         value = 1000)
+                         value = 1000),
+            selectInput("selCvar", multiple = TRUE,
+                       label = "Select Factors for Table", 
+                       choices = varnames)
+            
+     ),
+     column(4,
+            h4("Plot Comparsion Variable"),
+            selectInput("selPvar",
+                        label = "Select Focus Factor for Comparison", 
+                        choices = varnames)
      )
    )
 )
@@ -153,11 +172,18 @@ server <- function(input, output) {
   })
   
   suggest_data <- reactive({
-      avgAllVars(filter(college_data, ADM_RATE >= target_school()$avgAdmRate,
-             UGDS >= target_school()$avgSize-input$SizeRange,
-             UGDS <= target_school()$avgSize+input$SizeRange))[,c("OPEID","INSTNM", "CITY","STABBR","ZIP", input$selCvar)]
+      avgAllVars(filter(college_data, ADM_RATE <= target_school()$avgAdmRate,
+             UGDS >= (target_school()$avgSize-input$SizeRange),
+             UGDS <= (target_school()$avgSize+input$SizeRange)))[,c("OPEID","INSTNM", "CITY","STABBR","ZIP", input$selCvar)]
   })
   
+  school_sample  <- function() {
+    set.seed(987654321)
+    sample_vec <- sample(1:nrow(suggest_data()),10, replace= FALSE)
+    samp <- suggest_data()[sample_vec,]
+    rbind(target_school()[,c("OPEID","INSTNM", "CITY","STABBR","ZIP", input$selCvar)],
+          samp)
+  }
   
   output$statePlot <- renderPlot({
     plotSimple <- ggplot(data()) + geom_point(aes(x = data()[,input$selGeomX], 
@@ -179,12 +205,29 @@ server <- function(input, output) {
   }, hover = TRUE)
   
   output$suggestions <- renderPrint({
+    ids <- unique(school_sample()$OPEID[-1])
+    sampRows <- filter(college_shiny, OPEID %in% ids)[,-c(1:6)]
+    meanStats = apply(sampRows, 2, mean, na.rm= TRUE)
+    print(meanStats)
+    unscale(ridge_coef_full[1] + sum(ridge_coef_full[-1] *meanStats))[-c(1:113)]
+    #predict(lasso_full, as.matrix(meanStats), s = lasso_best)
     
   })
   
   output$comparisons <- renderTable({
-    sample_vec <- sample(1:nrow(suggest_data()),10, replace= TRUE)
-    suggest_data()[sample_vec,]
+    school_sample()
+  }, hover = TRUE)
+  
+  output$targetPlot <- renderPlot({
+    ggplot(school_sample()) + 
+      geom_bar(aes(x = OPEID, y = target_school()[,input$selPvar]), 
+               stat = "identity") +
+      labs(x="OPEID", y = input$selPvar)
+    
+  })
+  
+  output$compPlots <- renderPlot({
+    
   })
 }
 

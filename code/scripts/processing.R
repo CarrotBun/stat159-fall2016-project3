@@ -14,7 +14,15 @@ new_colleges_df <- cbind(temp_df, ADM_RATE = colleges_df$ADM_RATE)
 # scaling and centering
 scaled_colleges <- scale(new_colleges_df, center = TRUE, scale = TRUE)
 
+college_shiny <- cbind(colleges_df[,1:6], scaled_colleges)
+
+
+unscale <- function(r){
+	r *attr(scaled_colleges,'scaled:scale') + attr(scaled_colleges, 'scaled:center')
+}
+
+
 # export scaled data
 write.csv(scaled_colleges, file = "data/datasets/scaled-colleges.csv", row.names = FALSE)
-save(scaled_colleges, file = "data/RData-files/scaled-colleges.RData")
+save(scaled_colleges, college_shiny, unscale, file = "data/RData-files/scaled-colleges.RData")
 
