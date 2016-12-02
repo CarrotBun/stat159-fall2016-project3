@@ -6,10 +6,10 @@ library(glmnet)
 
 #setwd("~/stat159/project3/applet/")
 
-load("../data/RData-files/Ridge-Regression.RData")
+load("../data/RData-files/ridge-regression.RData")
 load("../data/RData-files/scaled-colleges.RData")
 load("../data/RData-files/colleges.RData")
-
+college_data <- data
 source("../code/functions/cleaning-helpers.R")
 
 college_data <- factor_this(college_data)
@@ -208,7 +208,7 @@ server <- function(input, output) {
     ids <- unique(school_sample()$OPEID[-1])
     sampRows <- filter(college_shiny, OPEID %in% ids)[,-c(1:6)]
     meanStats = apply(sampRows, 2, mean, na.rm= TRUE)
-    print(meanStats)
+    #print(meanStats)
     unscale(ridge_coef_full[1] + sum(ridge_coef_full[-1] *meanStats))[-c(1:113)]
     #predict(lasso_full, as.matrix(meanStats), s = lasso_best)
     
