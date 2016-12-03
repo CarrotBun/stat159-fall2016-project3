@@ -49,6 +49,10 @@ If you type `make` followed by a phony target you will get the following results
 * `make session`: This target will output session-info.txt. 
 * `make clean`: This target will delete the generated reports, report.pdf and report.html.
 
-Licenses: All media in this work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/legalcode). All code is licensed under BSD-2-Clause, more information about this license can be found in the License file.
+Licenses: 
+
+![License](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)
+All media in this work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/legalcode). 
+All code is licensed under BSD-2-Clause, more information about this license can be found in the License file.
 
 
