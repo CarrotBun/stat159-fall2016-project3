@@ -17,8 +17,8 @@ scaled_colleges <- scale(new_colleges_df, center = TRUE, scale = TRUE)
 college_shiny <- cbind(colleges_df[,1:6], scaled_colleges)
 
 
-unscale <- function(r){
-	r *attr(scaled_colleges,'scaled:scale') + attr(scaled_colleges, 'scaled:center')
+unscale <- function(r, data){
+	r *attr(data,'scaled:scale') + attr(data, 'scaled:center')
 }
 
 
