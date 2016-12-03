@@ -27,6 +27,7 @@ Instructions on How to Reproduce (Assuming you have already have all the scripts
 6. For presentation, you can run `make slides` to generate the HTML presentation slides.
 7. To run the applet, run the command `make applet` to run the shiny app in terminal. To see the applet, open up the browser and go to the address at which the app is "listening on". For example, if terminal shows "Listening on http://127.0.0.1:4355", you should go to "http://127.0.0.1:4355/" to see the app (note the forward slash at the end). To terminate, use cltr+C.  
 
+Note: All the scripts in this project that involves randomization used `set.seed()` to assure reproducibility of the results. 
 
 List of Make Commands for Phony Targets:
 If you type `make` followed by a phony target you will get the following results.
@@ -49,10 +50,12 @@ If you type `make` followed by a phony target you will get the following results
 * `make session`: This target will output session-info.txt. 
 * `make clean`: This target will delete the generated reports, report.pdf and report.html.
 
-Licenses: 
+Licenses:  
 
 ![License](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)
-All media in this work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/legalcode). 
+
+All media in this work is licensed under a [Creative Commons Attribution-NonCommercial 4.0 International](https://creativecommons.org/licenses/by-nc/4.0/legalcode).  
+
 All code is licensed under BSD-2-Clause, more information about this license can be found in the License file.
 
 
