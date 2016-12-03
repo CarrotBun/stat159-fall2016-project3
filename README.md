@@ -1,6 +1,6 @@
 ## Comparing Different Regression Models 
 
-Project Name: stat159-fall2016-project2
+Project Name: stat159-fall2016-project3
 
 Authors: Erica Wong, Elly Wang, Bryana Gutierrez, and Lily Li
 
@@ -24,7 +24,9 @@ Instructions on How to Reproduce (Assuming you have already have all the scripts
 3. Then, you will run through all of the different scripts just to make sure that everything is up to date and that you have a version of each of the output files you will do this by `make data eda session processing traintest regressions`
 4. In this project, we also had to create tests to be tested under testthat functions. To run the test-that tests, run the command `make tests`.
 5. Now you are ready to generate the report. To make the report, run the command `make report`, this will run the report.Rnw and generate the report.pdf.
-6. Finally, you can run `make slides` to generate the HTML presentation slides.
+6. For presentation, you can run `make slides` to generate the HTML presentation slides.
+7. To run the applet, run the command `make applet` to run the shiny app in terminal. To see the applet, open up the browser and go to the address at which the app is "listening on". For example, if terminal shows "Listening on http://127.0.0.1:4355", you should go to "http://127.0.0.1:4355/" to see the app (note the forward slash at the end). To terminate, use cltr+C.  
+
 
 List of Make Commands for Phony Targets:
 If you type `make` followed by a phony target you will get the following results.
