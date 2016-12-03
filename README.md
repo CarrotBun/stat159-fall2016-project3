@@ -47,8 +47,10 @@ If you type `make` followed by a phony target you will get the following results
 * `make regressions`: This target will run the targets ols, ridge, lasso, pcr, and plsr. It will run all the regression scripts and generate their data outputs.
 * `make report`: This target will generate the final reports report.pdf and report.html from report.Rmd which will be creates from the section files pasted together.
 * `make slides`: This target will generate the html version of the report slides.
-* `make session`: This target will output session-info.txt. 
+* `make session`: This target will output session-info.txt.
+* `make applet`: This target will run the applet from the terminal. 
 * `make clean`: This target will delete the generated reports, report.pdf and report.html.
+
 
 Licenses:  
 
