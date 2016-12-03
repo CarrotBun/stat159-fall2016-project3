@@ -9,9 +9,10 @@ reprnw = report/report.Rnw
 reppdf = report/report.pdf
 sections = report/sections/*
 
-.PHONY: all data cleaning processing eda session traintest ridge ols slides lasso pcr plsr regressions report
+.PHONY: all data cleaning processing eda session traintest ridge ols slides lasso pcr plsr regressions report applet
 
-all: data cleaning processing
+all: data cleaning processing eda session traintest ridge ols slides lasso pcr plsr regressions report applet
+
 
 # download data file
 data:
@@ -135,6 +136,10 @@ session: session-info.txt
 # This target allocates a target file for the output of sesison.sh
 session-info.txt: $(codescr)/session.sh
 	bash $(codescr)/session.sh
+
+# This target will run the shiny applet
+applet: $(dataR)/scaled-colleges.RData $(dataR)/colleges.RData code/functions/cleaning-helpers.R
+	R -e "shiny::runApp('applet')"
 
 # This target will delete the generated report, report.pdf.
 clean: 
