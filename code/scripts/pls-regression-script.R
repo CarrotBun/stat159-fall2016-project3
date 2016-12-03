@@ -13,7 +13,7 @@ colleges_nona <- complete.cases(scaled_colleges)
 scaled_colleges2 <- scaled_colleges[colleges_nona, ]
 
 #setting a random seed to run the ten-cross validation 
-set.seed(27182)
+set.seed(98765)
 
 #fitting a partial least squares regression to the training data: 
 cv_pls <- plsr(ADM_RATE ~ ., data = train_set2, validation = 'CV')
