@@ -8,7 +8,7 @@ library(tidyr)
 
 #setwd("~/stat159/project3/applet/")
 
-load("../data/RData-files/ridge-regression.RData")
+## Load Data files
 load("../data/RData-files/scaled-colleges.RData")
 load("../data/RData-files/colleges.RData")
 college_data <- data
@@ -17,7 +17,7 @@ source("../code/functions/cleaning-helpers.R")
 
 college_data <- factor_this(college_data)
 
-
+## Variables for selection menu
 varlist <- list(
   "Admission Rate" = 23,
   "Size" = 6,
@@ -46,9 +46,9 @@ varnames <- list(
   "Marrital Status" = "avgMarried",
   "First Generation" = "avgFirstGen",
   "Family Income" = "avgFamilyInc",
-  "SAT Reading" = "avgSATVR75",
-  "SAT Math" = "avgSATMT75",
-  "SAT Writing" = "avgSATWR75",
+  "SAT Reading" = c("avgSATVR25", "avgSATVR75"),
+  "SAT Math" = c("avgSATMT25", "avgSATMT75"),
+  "SAT Writing" = c("avgSATWR25", "avgSATWR75"),
   "Completion Rate" = "avgCompletion",
   "Transfer Rate" = "avgTransfer",
   "Race - White" = "avgWhite",
@@ -91,7 +91,7 @@ varnames_original <- list(
 )
 
 
-
+## Summarize variables grouping by year, taking mean
 avgAllVars <- function(table) {
   summarize(
     group_by(table,
@@ -121,20 +121,18 @@ avgAllVars <- function(table) {
     avgTransfer = mean(MARRIED, na.rm = TRUE)
   )
 }
+
 ui <- fluidPage(
   titlePanel("College Admissions"),
   
+  ## Main Display
   tabsetPanel(
     tabPanel("Plot", plotOutput("statePlot")),
     tabPanel("Summary", verbatimTextOutput("summary")),
     tabPanel("Table", tableOutput("table")),
     tabPanel("Suggestions", verbatimTextOutput("suggestions")),
-    tabPanel("Comparisons", tableOutput("comparisons")),
-    tabPanel("Comparison Plots",
-             fluidRow(
-               column(8, plotOutput("targetPlot")),
-               column(12, plotOutput("compPlots"))
-             ))
+    tabPanel("Comparisons Table", tableOutput("comparisons")),
+    tabPanel("Comparison Plots",plotOutput("compPlot"))
   ),
   
   h3("Simple School Lookup"),
@@ -142,9 +140,9 @@ ui <- fluidPage(
   fluidRow(
     column(
       3,
+      # Basic filter menu
       h4("Attribute Filter"),
       selectInput("selState", "State:", unique(college_data$STABBR)),
-      #selectInput("selLocale", "Setting:", c("City"=1, "Suburb"=2,"Town"=3, "Rural"=4)),
       sliderInput(
         "SizeRange",
         "Size",
@@ -163,6 +161,7 @@ ui <- fluidPage(
     column(
       4,
       offset = 1,
+      # Table variable selection
       selectInput(
         "selTvar",
         multiple = TRUE,
@@ -202,7 +201,7 @@ ui <- fluidPage(
     column(
       4,
       offset = 1,
-      h4("Similar School Criteria"),
+      h4("Prediction Criteria"),
       #numericInput("SizeRange",
       #              label ="Size Range",
       #             value = 1000),
@@ -214,13 +213,6 @@ ui <- fluidPage(
         selected = c("avgSize", "avgAgeEntry")
       )
       
-    ),
-    column(
-      4,
-      h4("Plot Comparsion Variable"),
-      selectInput("selPvar",
-                  label = "Select Focus Factor for Comparison",
-                  choices = varnames)
     )
   )
 )
@@ -248,6 +240,7 @@ server <- function(input, output) {
     
   })
   
+  # Filter schools according to admission rates
   suggest_data <- reactive({
     #avgAllVars(college_data)
     filter(avgAllVars(college_data),
@@ -260,6 +253,7 @@ server <- function(input, output) {
                                                               "avgAdmRate")]
   })
   
+  # Sample 20 schools 
   school_sample  <- function() {
     set.seed(987654321)
     sample_vec <- sample(1:nrow(suggest_data()), 20, replace = TRUE)
@@ -274,6 +268,8 @@ server <- function(input, output) {
           samp)
   }
   
+  
+  # Regression using Lasso
   regress <- function(data) {
     nona = complete.cases(data)
     print(paste("Numeber of variables selected:" , ncol(data)-1))
@@ -293,7 +289,7 @@ server <- function(input, output) {
     
   }
   
-  
+  # Select regular column based on avgColumns selection choices
   select_cols <- function(cols) {
     columns <- c()
     original_names <-
@@ -302,23 +298,12 @@ server <- function(input, output) {
         "UGDS_AIAN","UGDS_NHPI","UGDS_2MOR","UGDS_NRA","UGDS_UNKN",
         "AGE_ENTRY","UGDS_WOMEN","MARRIED","FIRST_GEN","FAMINC"
       )
+    # Avg column names
     quantcols <-
-      c(
-        "avgSize",
-        "avgWhite",
-        "avgBlack",
-        "avgHisp",
-        "avgAsian",
-        "avgAIAN",
-        "avgNHPI",
-        "avg2MOR",
-        "avgForeign",
-        "unknown",
-        "avgAgeEntry",
-        "avgWomen",
-        "avgMarried",
-        "avgFirstGen",
-        "avgFamilyInc"
+      c("avgSize","avgWhite","avgBlack","avgHisp",
+        "avgAsian","avgAIAN","avgNHPI","avg2MOR",
+        "avgForeign","unknown","avgAgeEntry","avgWomen",
+        "avgMarried","avgFirstGen","avgFamilyInc"
       )
     avgCTrate <- c("avgCompletion", "avgTransfer")
     
@@ -326,6 +311,7 @@ server <- function(input, output) {
       if (name %in% quantcols) {
         columns = c(columns, original_names[name == quantcols])
       }
+      # State selection
       if (name == "ST_FIPS") {
         columns = c(
           columns,
@@ -344,21 +330,32 @@ server <- function(input, output) {
           "ST_FIPS55","ST_FIPS56","ST_FIPS64","ST_FIPS66",
           "ST_FIPS68","ST_FIPS72","ST_FIPS78"
         )
+        # SAT Reading variables
       } else if (name == "avgSATVR75") {
         columns = c(columns, "SATVR25", "SATVR75")
+        
+        # SAT Math variables
       } else if (name == "avgSATMT75") {
         columns = c(columns, "SATMT25", "SATMT75")
+        
+        # SAT Writing variables
       } else if (name == "avgSATWR75") {
         columns = c(columns, "SATWR25", "SATWR75")
+        
+        # Completion and transfer rate
       } else if (name %in% avgCTrate) {
-        compInfo = c("competion", "transfer")
+        compInfo = c("completion", "transfer")
         columns = c(columns, compInfo[name == c("avgCompletion", "avgTransfer")])
+        
+        #Setting
       } else if (name == "LOCALE") {
         columns = c(
           columns,"LOCALE11","LOCALE12","LOCALE13","LOCALE21",
           "LOCALE22","LOCALE23","LOCALE31","LOCALE32","LOCALE33",
           "LOCALE41","LOCALE42","LOCALE43"
         )
+        
+        #College Classification
       } else if (name == "CCUGPROF") {
         colums = c(
           columns,
@@ -368,12 +365,13 @@ server <- function(input, output) {
           "CCUGPROF12","CCUGPROF13","CCUGPROF14","CCUGPROF15"
         )
       }
-      #print(columns)
     }
     
     columns
     
   }
+  
+  # Basic Plot
   output$statePlot <- renderPlot({
     plotSimple <-
       ggplot(data()) + geom_point(aes(x = data()[, input$selGeomX],
@@ -386,20 +384,28 @@ server <- function(input, output) {
     plotSimple
   })
   
+  # Summary ouput of all the schools that fit the basic filter
   output$summary <- renderPrint({
-    summary(data()[, -(1:5)], na.rm = TRUE)
+    summary(data()[, -(1:7)], na.rm = TRUE)
   })
   
+  # Table of all the schools that fit the basic filter
   output$table <- renderTable({
     data()[, c("OPEID", "INSTNM", "CITY", "STABBR", "ZIP", input$selTvar)]
   }, hover = TRUE)
   
+  # Suggestion of impovement
   output$suggestions <- renderPrint({
+    print(paste("Focus/Target school ID is",input$selTschool))
+    print(paste("Variables considered:", input$selCvar))
+
     ids <- unique(school_sample()$OPEID)
     sampRows <-
       filter(college_shiny, OPEID %in% ids)[, -c(1:6)][, c(select_cols(input$selCvar), "ADM_RATE")]
-    #print(sampRows)
+    print("Using similar's schools' statistics, our prediction model yields:")
+    
     unscale(regress(sampRows), college_scaled)[-c(1:113)]
+
     
   })
   
@@ -407,15 +413,11 @@ server <- function(input, output) {
     school_sample()
   }, hover = TRUE)
   
-  output$targetPlot <- renderPlot({
+  output$compPlot <- renderPlot({
     school_df = school_sample()
     school_df$Target = c(1, rep(0,20))
     tb = gather(school_df, key = Type, value = Value, -OPEID,  -INSTNM, -CITY, -STABBR, -ZIP, -Target)
     tb$Type = as.factor(tb$Type)
-    
-    target = gather(school_sample()[1,], key = Type, value = Value, -OPEID,  -INSTNM, -CITY, -STABBR, -ZIP)
-    target$Type = as.factor(target$Type)
-    print(tb)
     
     ggplot() +
       geom_bar(data= tb, aes(x = OPEID, y = Value,col = OPEID, fill = OPEID), stat= "identity") +
@@ -424,17 +426,7 @@ server <- function(input, output) {
       theme(axis.text.x = element_blank())
     
   })
-  
-  output$compPlots <- renderPlot({
-    tb = gather(school_sample()[1,], key = Type, value = Value, -OPEID,  -INSTNM, -CITY, -STABBR, -ZIP)
-    tb$Type = as.factor(tb$Type)
-    print(tb)
-    
-    ggplot(tb, aes(x = OPEID, y = Value)) +
-      geom_point(aes(col = Type)) +
-      facet_wrap(~Type, scales = "free") +
-      labs(x = "OPEID", y = input$selPvar)
-  })
+
 }
 
 # Run the application
