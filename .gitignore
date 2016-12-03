@@ -6,3 +6,6 @@ data/raw/
 .Rapp
 .Rapp.history
 
+applet/.Rhistory
+applet/.DS_Store
+
