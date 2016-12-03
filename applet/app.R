@@ -177,13 +177,7 @@ ui <- fluidPage(
                   choices = varnames),
       selectInput("selGeomY",
                   label = "Y variable",
-                  choices = varnames),
-      selectInput(
-        "selGeomLine",
-        label = "Include linear regression line?",
-        choices = c("Yes" = TRUE,  "No" = FALSE),
-        selected = FALSE
-      )
+                  choices = varnames)
     )
   ),
   br(),
@@ -220,7 +214,7 @@ ui <- fluidPage(
 # Define server logic required to draw a histogram
 server <- function(input, output) {
   ## Data used for basic plot and table
-  data <- reactive({
+  collegeData <- reactive({
     avgAllVars(
       filter(
         college_data,
@@ -373,25 +367,26 @@ server <- function(input, output) {
   
   # Basic Plot
   output$statePlot <- renderPlot({
+    pData<- data.frame(sapply(collegeData()[, c(input$selGeomX, input$selGeomY)],as.numeric))
+    #pData <- data.frame(sapply(pData, as.numeric))
+    
     plotSimple <-
-      ggplot(data()) + geom_point(aes(x = data()[, input$selGeomX],
-                                      y = data()[, input$selGeomY])) +
-      labs(x = input$selGeomX, y = input$selGeomY)
-    if (input$selGeomLine) {
-      plotSimple <- plotSimple + stat_smooth(method = "lm", col = "navy")
-    }
+      ggplot(pData, aes(x = pData[,1], y = pData[,2])) +
+      geom_point()+
+      stat_smooth(method = "lm", col = "#D55E00") + 
+      labs(x = input$selGeomX, y = input$selGeomY) 
     
     plotSimple
   })
   
   # Summary ouput of all the schools that fit the basic filter
   output$summary <- renderPrint({
-    summary(data()[, -(1:7)], na.rm = TRUE)
+    summary(collegeData()[, -(1:7)], na.rm = TRUE)
   })
   
   # Table of all the schools that fit the basic filter
   output$table <- renderTable({
-    data()[, c("OPEID", "INSTNM", "CITY", "STABBR", "ZIP", input$selTvar)]
+    collegeData()[, c("OPEID", "INSTNM", "CITY", "STABBR", "ZIP", input$selTvar)]
   }, hover = TRUE)
   
   # Suggestion of impovement
