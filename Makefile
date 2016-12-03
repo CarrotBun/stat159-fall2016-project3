@@ -134,7 +134,7 @@ slides/presentation.html:
 session: session-info.txt
 
 # This target allocates a target file for the output of sesison.sh
-session-info.txt: $(codescr)/session.sh
+session-info.txt: $(codescr)/session.sh $(codescr)/session-info-script.R
 	bash $(codescr)/session.sh
 
 # This willrun all tests through test-that
