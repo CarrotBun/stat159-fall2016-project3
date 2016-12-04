@@ -1,4 +1,4 @@
-# Conclusion
+\section{Conclusion}
 
 Through the use of linear methods, we were able to find the method that would produce the best possible model for our data. This method turned out to be lasso regression. While lasso regression increases bias, it decreases variability. With a smaller variance, the predictions are closer to the true model meaning that this may be a better model.
 
