@@ -1,9 +1,6 @@
----
-output: pdf_document
----
-## Methods  
+\section{Methods}
 
-###Standardization  
+\subsection{Standardization}
 The colleges information data contains data measured in different scales such as admissions rate versus age (which are on very different scales). To prevent any biased weighting, we want to standardize the information before modeling.  
 
 First, we created inidicator variables for the qualitative variables discussed in the introduction. Next, we want to standardize the absolute quantitites to relative quantities (mean centering).    
@@ -13,14 +10,73 @@ One reason to standardize variables is to have comparable scales. When you perfo
 In addition to standardizing, we removed all observations that have NA's.
 
 
-###Regression Models (Technical Explanation)  
+\subsection{Regression Models (Technical Explanation) }
 
-####*Ordinary Least Squares Regression (OLS)*  
+\textbf{Ordinary Least Squares Regression (OLS)}
 If predictors (regressors) are correlated, the stability of the $\hat{beta}$ decreases, meaning, every estimate of $\beta$ could be very different and not converge to the true population coefficient. 
 
-$$Balance = \beta_1 Married + \beta_2 Income + \beta_3 1st Generation + ...$$  
+$$Balance = \beta_1 Married + \beta_2 Income + \beta_3 1st Generation + \dots$$  
 
-####*Ridge Regression (RR)*  
+In order to find the best explanatory variables, we use model selection and cross validation. Using AIC and BIc, we find which variables would be the most helpful in predicting the admission rate. Each of these methods gives us two models: 
+
+The model using AIC is, 
+
+\noindent
+ADM\_RATE $\sim$ UGDS + UGDS\_BLACK + UGDS\_2MOR + AGE\_ENTRY + 
+
+      UGDS\_WOMEN + FIRST\_GEN + FAMINC + MN\_EARN\_WNE\_P10 + 
+      
+      ST\_FIPS6 + ST\_FIPS9 + ST\_FIPS10 + ST\_FIPS11 + ST\_FIPS12 + 
+      
+      ST\_FIPS13 + ST\_FIPS15 + ST\_FIPS17 + ST\_FIPS20 +ST\_FIPS21 +
+      
+      ST\_FIPS24 + ST\_FIPS25 + ST\_FIPS29 +ST\_FIPS30 + ST\_FIPS34 + 
+      
+      ST\_FIPS35 + ST\_FIPS36 + ST\_FIPS37 + ST\_FIPS39 + ST\_FIPS40 +
+      
+      ST\_FIPS48 + ST\_FIPS50 + ST\_FIPS53 + ST\_FIPS54 + ST\_FIPS78 + 
+      
+      SATMT25 + SATMT75 + SATWR25 + SATWR75 + SATVR25 + 
+      
+      completion + transfer + LOCALE23 + LOCALE31 + LOCALE32 + 
+      
+      LOCALE33 + CCUGPROF5 + CCUGPROF6 + CCUGPROF7 + 
+      
+      CCUGPROF8 + CCUGPROF9 + CCUGPROF10 + CCUGPROF11 +
+      
+      CCUGPROF12 + CCUGPROF13 + CCUGPROF14 + CCUGPROF15 + 
+      
+      Year2011
+
+The model using BIC is, 
+
+\noindent
+ADM\_RATE $\sim$ UGDS\_BLACK + UGDS\_WOMEN + FAMINC + 
+
+      ST\_FIPS6 + ST\_FIPS10 + ST\_FIPS12 + ST\_FIPS20 + ST\_FIPS21 + 
+      
+      ST\_FIPS24 + ST\_FIPS25 + ST\_FIPS30 + ST\_FIPS34 + ST\_FIPS35 + 
+      
+      ST\_FIPS36 + ST\_FIPS37 + ST\_FIPS50 + ST\_FIPS53 + ST\_FIPS54 + 
+      
+      ST\_FIPS78 + SATVR25 + SATMT25 + SATMT75 + SATWR75 + 
+      
+      completion + transfer + CCUGPROF5 + CCUGPROF6 + 
+      
+      CCUGPROF7 + CCUGPROF8 + CCUGPROF9 + CCUGPROF10 + 
+      
+      CCUGPROF11 + CCUGPROF12 + CCUGPROF13 + CCUGPROF14 + 
+      
+      CCUGPROF15
+            
+
+Using cross validation, we found that the best model out of these two is the one using AIC. The combination of these variables are the best at predicting admission rate. 
+
+\bigskip
+\noindent
+\textbf{Ridge Regression (RR)}
+\smallskip
+
 RR is a variation of the minimization in OLS Regression but with a constraint of $||\beta||^2_2 < c^2$.  
 
 In vector form: $min \beta$ $||y-A\beta||^2_2 + \lambda||\beta||^2_2$ 
@@ -29,27 +85,37 @@ A difference in behavior of RR is that as $\lambda$ increases, more weight is gi
 
 The main advantage of RR is that it takes correlated parameters into account and does automatics parameter weighing. 
 
-####*Lasso Regression (LR)*  
+\bigskip
+\noindent
+\textbf{Lasso Regression (LR)}
+\smallskip
+
 LR is a variation of the minimization in OLS Regression but with a constraint of $||\beta||_1 < c$. With c, the constraint shape becomes a diamond and any pairs of $\beta$ will likely contain zeros. Unlike RR, there is no explicit form of $\beta$.
 
 In vector form: $min \beta$ $||y-A\beta||^2_2 + \lambda||\beta||_1$  
 
 The main advantage of LR is that it performs both parameter shrinkage through feature selection (sparsify regressors/predictors) and variable selection automatically.  
 
-####*Principal Component Regression (PCR)*
+\bigskip
+\noindent
+\textbf{Principal Component Regression (PCR)}
+\smallskip
+
 PCR is based on principal component analysis. The goal of this method is to reduce the dimensions (created by the set of data points in n-dimensional space).  
 
 To do so, we want define a direction, the first principal component, that maximizes the the variability in the data set and set the second principal component perpendicular to this first principal component. As a result, each data point's coordinates will change to this new coordinate system.  
 
-####*Partial Least Squares Regression (PLSR)*
+\bigskip
+\noindent
+\textbf{Partial Least Squares Regression (PLSR)}
+\smallskip
+
 PLSR, similar to PCR, is also a dimensionality reduction method. While PCR finds hyperplanes of maximum variance between the predictors and responses, PLSR projects the predicted variables and the observable variables into a new space.   
 
 The main advantage is that PLSR uses the annotated label to maximize inter-class variance. It takes into account of the classes and tries to reduce the dimension while maximizing the separation of classes.  
 
 
-###Cross Validation and Train-Test Sets
+\subsection{Cross Validation and Train-Test Sets}
 Because we have limited amount of observations to build and test the model and we want to prevent bias, we will build and test the model using different subsets of the whole data set.  
 
-We built train sets using 75% of the observations and test sets of the remaining 25% by random sampling (without replacement). We repeated this process 10 times for a 10 fold cross validation when we ran the regressions.  
-  
-  
+We built train sets using 75\% of the observations and test sets of the remaining 25\% by random sampling (without replacement). We repeated this process 10 times for a 10 fold cross validation when we ran the regressions.  
