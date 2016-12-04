@@ -1,7 +1,9 @@
 ---
 title: "College Admission Findings"
 author: "The Four Leaf Clever"
-output: ioslides_presentation
+output: 
+  ioslides_presentation:
+    logo: clover.png
 ---
 
 ```{r setup, include=FALSE}
@@ -17,13 +19,14 @@ Goals:
 
 ## Data - Variables
 Source: CollegBoard  
+  
 Some variables include:  
-- State
-- Undergraduate student size
-- Undergraduate student race
-- Marital status
-- Percentage of first generation college
-- Average family income
+- State  
+- Undergraduate student size  
+- Undergraduate student race  
+- Marital status  
+- Percentage of first generation college  
+- Average family income  
 - SATs  
 
 
@@ -42,3 +45,28 @@ To find the best model for prediction, following regression models were consider
 # Analysis  
 
 ## Summary 
+```{r echo = FALSE}
+load("../data/RData-files/ols-regression.RData")
+load("../data/RData-files/ridge-regression.RData")
+load("../data/RData-files/Lasso-Regression.RData")
+load("../data/RData-files/PCR-Regression.RData")
+load("../data/RData-files/pls-regression.RData")
+
+Regression <- c('OLS','Ridge', 'Lasso', 'PCR', 'PLSR')
+MSE <- c(ols_MSE, ridge_MSE, lasso_tMSE, pcr_tMSE, pls_mse)
+mse_chart <- data.frame(Regression, MSE)
+```
+
+```{r results="asis", echo = FALSE}
+library(pander)
+pander(mse_chart)
+```
+
+## App  
+1. Input the school's OPEID in order to get information about the school  
+2. Randomly choose 20 schools with a smaller admission rate and build a regression model using lasso regression  
+3. Predict what our client's new admission rate is using the scaled data for our client's school as the inputs  
+4. Output is an admission rate that is understandable and comparable with their current admission rate
+
+
+
