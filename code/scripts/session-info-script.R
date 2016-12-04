@@ -11,6 +11,11 @@ library(rmarkdown)
 library(reshape)
 library(Matrix)
 
+library(shiny)
+library(dplyr)
+library(glmnet)
+library(tidyr)
+
 # Generating Session-Info.txt
 sink("../../session-info.txt", append = TRUE)
 cat("Session Information\n\n")

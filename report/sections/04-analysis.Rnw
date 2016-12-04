@@ -1,7 +1,7 @@
 # Analysis
 
 ```{r echo = FALSE}
-load("../../data/RData-files/ridge-egression.RData")
+load("../../data/RData-files/ridge-regression.RData")
 load("../../data/RData-files/Lasso-Regression.RData")
 load("../../data/RData-files/PCR-Regression.RData")
 

@@ -1,6 +1,11 @@
 .DS_Store
 data/datasets/college.zip
 data/raw/
+
 .Rhistory
 .Rapp
 .Rapp.history
+
+applet/.Rhistory
+applet/.DS_Store
+
