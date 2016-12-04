@@ -1,6 +1,6 @@
-# Results
+\section{Results)
 
-```{r results= 'asis', echo = FALSE}
+<<results, results= 'asis', echo = FALSE>>=
 Regression <- c('OLS','Ridge', 'Lasso', 'PCR', 'PLSR')
 MSE <- c(ols_MSE, ridge_MSE, lasso_tMSE, pcr_tMSE, pls_mse)
 mse_chart <- data.frame(Regression, MSE)
@@ -11,5 +11,6 @@ mse_tbl <- xtable(mse_chart,
 print(mse_tbl, caption.placement = 'top',
       comment = getOption('xtable.comment', FALSE),
       include.rownames = FALSE)
-```
-In order to figure out which is the best model, we decided to compare the mean squared error (MSE) values and pick the model and method that produced the smallest MSE value. The smaller the MSE, the higher the prediction accuracy of the model. When Looking at the table Test MSE Values for the Regression Techniques, we found that all the MSEs were very similar with the range being `r pls_mse-lasso_tMSE`. Of all the regression methods, we found that the one that produced the smallest MSE is lasso regression, where MSE = `r lasso_tMSE`. So, we will use the equation produced via lasso regression in our app in order to help predict admission rates.
+@
+
+In order to figure out which is the best model, we decided to compare the mean squared error (MSE) values and pick the model and method that produced the smallest MSE value. The smaller the MSE, the higher the prediction accuracy of the model. When Looking at the table Test MSE Values for the Regression Techniques, we found that all the MSEs were very similar with the range being \Sexpr{pls_mse-lasso_tMSE}. Of all the regression methods, we found that the one that produced the smallest MSE is lasso regression, where MSE = \Sexpr{lasso_tMSE}. So, we will use the equation produced via lasso regression in our app in order to help predict admission rates.
