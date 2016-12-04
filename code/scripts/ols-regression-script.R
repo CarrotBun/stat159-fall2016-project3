@@ -23,6 +23,7 @@ step(ols_reg)
 n <- nrow(train_set2)
 step(ols_reg, k = log(n))
 
+#model found using AIC
 lm_1 <- lm(ADM_RATE ~ UGDS + UGDS_BLACK + UGDS_2MOR + AGE_ENTRY + 
              UGDS_WOMEN + FIRST_GEN + FAMINC + MN_EARN_WNE_P10 + ST_FIPS6 + 
              ST_FIPS9 + ST_FIPS10 + ST_FIPS11 + ST_FIPS12 + ST_FIPS13 + 
@@ -36,6 +37,7 @@ lm_1 <- lm(ADM_RATE ~ UGDS + UGDS_BLACK + UGDS_2MOR + AGE_ENTRY +
              CCUGPROF12 + CCUGPROF13 + CCUGPROF14 + CCUGPROF15 + Year2011, 
            data = train_set2)
 
+#model found using BIC
 lm_2 <- lm(ADM_RATE ~ UGDS_BLACK + UGDS_WOMEN + FAMINC + ST_FIPS6 + 
              ST_FIPS10 + ST_FIPS12 + ST_FIPS20 + ST_FIPS21 + ST_FIPS24 + 
              ST_FIPS25 + ST_FIPS30 + ST_FIPS34 + ST_FIPS35 + ST_FIPS36 + 
