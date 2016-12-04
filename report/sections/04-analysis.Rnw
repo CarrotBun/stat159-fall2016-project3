@@ -1,52 +1,82 @@
-# Analysis
+\section{Analysis}
 
-```{r echo = FALSE}
-load("../../data/RData-files/ridge-regression.RData")
-load("../../data/RData-files/Lasso-Regression.RData")
-load("../../data/RData-files/PCR-Regression.RData")
+\subsection{General}
+In order to complete cross validation, we first had to find the rows of information that contained complete entries, meaning that there is an input for every single column. We accomplished this by using the function complete.cases. Complete.cases creates a vector of true and false values, true when the row does not contain NAs and false when the row does have NAs. Each regression is then run on the parts of the train data that were complete.  
 
-```
+\bigskip
+\noindent
+\textbf{Ordinary Least Squares Regression}
+\smallskip
 
-## General
-In order to complete cross validation, we first had to find the rows of information that contained complete entries, meaning that there is an input for every single column. We accomplished this by using the function complete.cases. Complete.cases creates a vector of true and false values, true when the row does not contain NAs and false when the row does have NAs. Each regresion is then run on the parts of the train data that were complete.  
+As mentioned in the Methods section, we found the best model using model selection. The resulting model gave us the best predictive power in ordinary least squares. This model only includes a portion of the explanatory variables available, since model selection determines that some of the variables are not good predictors. 
+
+We build the model using the training data set and then using this model predicted the admissions rate using the testing data set. We then found the mean squared error (MSE) of these predictions. The MSE from OLS is \Sexpr{round(ols_MSE, 4)}
 
 
-##Ridge Regression  
+\bigskip
+\noindent
+\textbf{Ridge Regression}
+\smallskip
+
 When doing ridge regression, we started by looking at a ten-fold cross-validation. From cross validation, we were able to find the best model, which included finding our lambda or tuning variable.
 
-Below is the *MSE Plot of Ridge Regression* which shows the relationship between MSE and log(lambda).
+The \textbf{MSE Plot of Ridge Regression} shows the relationship between MSE and log(lambda).
 
-```{r fig.width = 5, fig.height = 3, echo=FALSE, fig.cap= 'MSE Plot of Ridge Regression', message = FALSE, fig.align = "center"}
-ridge_plot = readPNG('../../images/cv-ridge-mse-plot.png')
-grid.raster(ridge_plot)
-```
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{../images/cv-ridge-mse-plot.png}
+\caption{\label{fig:cv-ridge-mse-plot}MSE Plot of Ridge Regression}
+\end{figure}
 
-From running our cross-validation on the train data set, we find that lambda is `r lambda_min_ridge`. Using this lambda and regression, we predicted the admissions rate from the test set of data and found the mean square error (MSE) is `r ridge_MSE`.   
+From running our cross-validation on the train data set, we find that lambda is \Sexpr{lambda_min_ridge}. Using this lambda and regression, we predicted the admissions rate from the test set of data and found the MSE is \Sexpr{round(ridge_MSE, 4)}.   
 
+\bigskip
+\noindent
+\textbf{Lasso Regression}
+\smallskip
 
-##Lasso Regression  
-To run lasso regression, we utilized the glmnet package. In order to find the best lambda value for the regression, we created an array of 100 lambda values from `r 10^-2` to `r 10^10` and run a 10-fold cross validation on all these lambda values. We then proceeded to find the minimum lambda, `r lasso_best`.  
+To run lasso regression, we utilized the glmnet package. In order to find the best lambda value for the regression, we created an array of 100 lambda values from \Sexpr{10^-2} to \Sexpr{10^10} and run a 10-fold cross validation on all these lambda values. We then proceeded to find the minimum lambda, \Sexpr{lasso_best}.  
 
-Below is the plot of *MSE vs. log(lambda) for Lasso Regression*.  
+The plot \textbf{MSE Plot Lasso Regression} shows the relationship between MSE and log(lambda).
 
-```{r fig.width = 5, fig.height = 3, echo=FALSE, fig.cap= 'MSE Plot of Lasso Regression', message = FALSE, fig.align = "center"}
-lasso_plot = readPNG('../..images/lasso-validation.png')
-grid.raster(lasso_plot)  
-```
-Using this lambda and regression, we predicted the admissions rate from the test set of data and found the mean square error (MSE) is `r lasso_tMSE`.  
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{../images/cv-lasso-mse-plot.png}
+\caption{\label{fig:cv-lasso-mse-plot}MSE Plot of Lasso Regression}
+\end{figure}
 
+Using this lambda and regression, we predicted the admissions rate from the test set of data and found the MSE is \Sexpr{round(lasso_tMSE, 4)}.  
 
-##Principal Component Regression  
-In order to find the best lambda value for this regression, we utilized `pcr()` with the attribute of "validation" as "CV". The resulting best lambda is `r pcr_best`.   
+\bigskip
+\noindent
+\textbf{Principal Component Regression}
+\smallskip
 
-Below is the plot of *MSE vs. log(lambda) for PCR*.  
+In order to find the best lambda value for this regression, we utilized \textit{pcr()} with the attribute of "validation" as "CV". The resulting best number of components, lambda, is \Sexpr{pcr_best}.   
 
-```{r fig.width = 5, fig.height = 3, echo=FALSE, fig.cap= 'MSE Plot of PC Regression', message = FALSE, fig.align = "center"}
-lasso_plot = readPNG('../..images/pcr-validation.png')
-grid.raster(lasso_plot)  
-```
-Using this lambda and regression, we predicted the admissions rate from the test set of data and found the mean square error (MSE) is `r pcr_tMSE`.  
+The plot \textbf{MSE Plot of Principal Components Regression} shows the relationship between MSEP and the number of components.
 
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{../images/cv-pcr-mse-plot.png}
+\caption{\label{fig:cv-pcr-mse-plot}MSE Plot of Principal Components Regression}
+\end{figure}
 
+Using this lambda and regression, we predicted the admissions rate from the test set of data and found the MSE is \Sexpr{round(pcr_tMSE, 4)}.  
 
+\bigskip
+\noindent
+\textbf{Partial Least Squares Regression}
+\smallskip
 
+In order to find the best lambda value for this regression, we utilized \textit{plsr()} with the attribute of "validation" as "CV". The resulting best lambda is \Sexpr{lambda_min_pls}.   
+
+The plot \textbf{MSE Plot of Partial Least Squares Regression} shows the relationship between MSEP and lambda, the number of components. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{../images/cv-pls-mse-plot.png}
+\caption{\label{fig:cv-pls-mse-plot}MSE Plot of Partial Least Squares Regression}
+\end{figure}
+
+Using this lambda and regression, we predicted the admissions rate from the test set of data and found the MSE is \Sexpr{round(pls_mse, 4)}.   
