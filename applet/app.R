@@ -127,12 +127,12 @@ ui <- fluidPage(
   
   ## Main Display
   tabsetPanel(
-    tabPanel("Plot", plotOutput("statePlot")),
-    tabPanel("Summary", verbatimTextOutput("summary")),
     tabPanel("Table", tableOutput("table")),
-    tabPanel("Suggestions", verbatimTextOutput("suggestions")),
+    tabPanel("Summary", verbatimTextOutput("summary")),
+    tabPanel("Plot", plotOutput("statePlot")),
     tabPanel("Comparisons Table", tableOutput("comparisons")),
-    tabPanel("Comparison Plots",plotOutput("compPlot"))
+    tabPanel("Comparison Plots",plotOutput("compPlot")),
+    tabPanel("Suggestions", verbatimTextOutput("suggestions"))
   ),
   
   h3("Simple School Lookup"),
@@ -273,13 +273,18 @@ server <- function(input, output) {
     lasso_train = cv.glmnet(
       x = x_train,
       y = y_train,
+      alpha = 0,
       intercept = FALSE,
       standardize = FALSE,
       lambda = grid
     )
-    best_lam = lasso_train$lambda.min
+    print("The coefficients of the sample model: ")
+    print(coef(lasso_train))
     
+    best_lam = lasso_train$lambda.min
+    print("The predicted admissions rate: ")
     predict(lasso_train, as.matrix(data[1,-c(ncol(data))]), s = best_lam)
+    
     
   }
   
@@ -400,6 +405,9 @@ server <- function(input, output) {
     print("Using similar's schools' statistics, our prediction model yields:")
     
     unscale(regress(sampRows), college_scaled)[-c(1:113)]
+    
+    
+    
 
     
   })

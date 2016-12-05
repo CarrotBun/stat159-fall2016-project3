@@ -13,3 +13,7 @@ report/report.aux
 report/report.log
 report/report.out
 report/report.tex
+
+report/sections/05-results-concordance.tex
+report/sections/05-results.log
+report/sections/05-results.tex
