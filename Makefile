@@ -121,7 +121,7 @@ $(reprnw): $(sections)
 
 # This target will take the Rnw file report.Rnw and will knit the pdf document report.pdf
 $(reppdf): $(reprnw)
-	Rscript -e "library(knitr); knit('$(reprnw)', output = '$(reprnw)')"
+	Rscript -e "library(knitr); knit('$(reprnw)', output = '$(reppdf)')"
 
 # This target will generate the html version of the report slides.
 slides: slides/presentation.html
