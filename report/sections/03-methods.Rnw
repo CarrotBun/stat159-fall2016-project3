@@ -22,53 +22,39 @@ In order to find the best explanatory variables, we use model selection and cros
 The model using AIC is, 
 
 \noindent
-ADM\_RATE $\sim$ UGDS + UGDS\_BLACK + UGDS\_2MOR + AGE\_ENTRY + 
+ADM\_RATE $\sim$ UGDS + UGDS\_BLACK + UGDS\_2MOR + AGE\_ENTRY + UGDS\_WOMEN + 
 
-      UGDS\_WOMEN + FIRST\_GEN + FAMINC + MN\_EARN\_WNE\_P10 + 
+    FIRST\_GEN + FAMINC + MN\_EARN\_WNE\_P10 + ST\_FIPS6 + ST\_FIPS9 + ST\_FIPS10 + 
+  
+    ST\_FIPS11 + ST\_FIPS12 + ST\_FIPS13 + ST\_FIPS15 + ST\_FIPS17 + ST\_FIPS20 + ST\_FIPS21 +
       
-      ST\_FIPS6 + ST\_FIPS9 + ST\_FIPS10 + ST\_FIPS11 + ST\_FIPS12 + 
-      
-      ST\_FIPS13 + ST\_FIPS15 + ST\_FIPS17 + ST\_FIPS20 +ST\_FIPS21 +
-      
-      ST\_FIPS24 + ST\_FIPS25 + ST\_FIPS29 +ST\_FIPS30 + ST\_FIPS34 + 
-      
-      ST\_FIPS35 + ST\_FIPS36 + ST\_FIPS37 + ST\_FIPS39 + ST\_FIPS40 +
-      
-      ST\_FIPS48 + ST\_FIPS50 + ST\_FIPS53 + ST\_FIPS54 + ST\_FIPS78 + 
-      
-      SATMT25 + SATMT75 + SATWR25 + SATWR75 + SATVR25 + 
-      
-      completion + transfer + LOCALE23 + LOCALE31 + LOCALE32 + 
-      
-      LOCALE33 + CCUGPROF5 + CCUGPROF6 + CCUGPROF7 + 
-      
-      CCUGPROF8 + CCUGPROF9 + CCUGPROF10 + CCUGPROF11 +
-      
-      CCUGPROF12 + CCUGPROF13 + CCUGPROF14 + CCUGPROF15 + 
-      
-      Year2011
+    ST\_FIPS24 + ST\_FIPS25 + ST\_FIPS29 +ST\_FIPS30 + ST\_FIPS34 + ST\_FIPS35 + ST\_FIPS36 +
+    
+    ST\_FIPS37 + ST\_FIPS39 + ST\_FIPS40 + ST\_FIPS48 + ST\_FIPS50 + ST\_FIPS53 + ST\_FIPS54 +
+    
+    ST\_FIPS78 + SATMT25 + SATMT75 + SATWR25 + SATWR75 + SATVR25 + completion + 
+    
+    transfer + LOCALE23 + LOCALE31 + LOCALE32 + LOCALE33 + CCUGPROF5 + 
+    
+    CCUGPROF6 + CCUGPROF7 + CCUGPROF8 + CCUGPROF9 + CCUGPROF10 + 
+    
+    CCUGPROF11 + CCUGPROF12 + CCUGPROF13 + CCUGPROF14 + CCUGPROF15 + Year2011
 
 The model using BIC is, 
 
 \noindent
-ADM\_RATE $\sim$ UGDS\_BLACK + UGDS\_WOMEN + FAMINC + 
+ADM\_RATE $\sim$ UGDS\_BLACK + UGDS\_WOMEN + FAMINC + ST\_FIPS6 + ST\_FIPS10 + 
 
-      ST\_FIPS6 + ST\_FIPS10 + ST\_FIPS12 + ST\_FIPS20 + ST\_FIPS21 + 
-      
-      ST\_FIPS24 + ST\_FIPS25 + ST\_FIPS30 + ST\_FIPS34 + ST\_FIPS35 + 
-      
-      ST\_FIPS36 + ST\_FIPS37 + ST\_FIPS50 + ST\_FIPS53 + ST\_FIPS54 + 
-      
-      ST\_FIPS78 + SATVR25 + SATMT25 + SATMT75 + SATWR75 + 
-      
-      completion + transfer + CCUGPROF5 + CCUGPROF6 + 
-      
-      CCUGPROF7 + CCUGPROF8 + CCUGPROF9 + CCUGPROF10 + 
-      
-      CCUGPROF11 + CCUGPROF12 + CCUGPROF13 + CCUGPROF14 + 
-      
-      CCUGPROF15
-            
+    ST\_FIPS12 + ST\_FIPS20 + ST\_FIPS21 + ST\_FIPS24 + ST\_FIPS25 + ST\_FIPS30 + ST\_FIPS34 +
+    
+    ST\_FIPS35 + ST\_FIPS36 + ST\_FIPS37 + ST\_FIPS50 + ST\_FIPS53 + ST\_FIPS54 + ST\_FIPS78 + 
+    
+    SATVR25 + SATMT25 + SATMT75 + SATWR75 + completion + transfer + CCUGPROF5 + 
+    
+    CCUGPROF6 +  CCUGPROF7 + CCUGPROF8 + CCUGPROF9 + CCUGPROF10 + 
+    
+    CCUGPROF11 + CCUGPROF12 + CCUGPROF13 + CCUGPROF14 + CCUGPROF15
+
 
 Using cross validation, we found that the best model out of these two is the one using AIC. The combination of these variables are the best at predicting admission rate. 
 
