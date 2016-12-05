@@ -1,5 +1,8 @@
-# Conclusion
+\section{Conclusion}
 
 Through the use of linear methods, we were able to find the method that would produce the best possible model for our data. This method turned out to be lasso regression. While lasso regression increases bias, it decreases variability. With a smaller variance, the predictions are closer to the true model meaning that this may be a better model.
 
+\medskip
 Having a good linear model is very important to our project because our entire shiny application and consulting recommendations depends on it. From our linear model, were are able to predict what the admission rates would be based on a sample of schools that are similar but have a smaller admission rate. Additionally our shiny application will allow us to make the best recommendations to our client because it tells us exactly how much their rate could be lowered by and which areas the can improve on in order to get their rate to what we predicted. 
+
+\end{document}
