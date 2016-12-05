@@ -1,6 +1,6 @@
 \section{Results}
 
-<<results, results= tex, echo = FALSE>>=
+<<results, results= 'asis', echo = FALSE>>=
 Regression <- c('OLS','Ridge', 'Lasso', 'PCR', 'PLSR')
 MSE <- c(ols_MSE, ridge_MSE, lasso_tMSE, pcr_tMSE, pls_mse)
 mse_chart <- data.frame(Regression, MSE)
