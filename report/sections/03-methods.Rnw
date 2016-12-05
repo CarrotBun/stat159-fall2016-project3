@@ -15,7 +15,7 @@ In addition to standardizing, we removed all observations that have NA's.
 \textbf{Ordinary Least Squares Regression (OLS)}
 If predictors (regressors) are correlated, the stability of the $\hat{beta}$ decreases, meaning, every estimate of $\beta$ could be very different and not converge to the true population coefficient. 
 
-$$Balance = \beta_1 Married + \beta_2 Income + \beta_3 1st Generation + \dots$$  
+$$Adm\ Rate = \beta_1 Married + \beta_2 Income + \beta_3 1st Generation + \dots$$  
 
 In order to find the best explanatory variables, we use model selection and cross validation. Using AIC and BIc, we find which variables would be the most helpful in predicting the admission rate. Each of these methods gives us two models: 
 
