@@ -127,12 +127,12 @@ ui <- fluidPage(
   
   ## Main Display
   tabsetPanel(
-    tabPanel("Plot", plotOutput("statePlot")),
-    tabPanel("Summary", verbatimTextOutput("summary")),
     tabPanel("Table", tableOutput("table")),
-    tabPanel("Suggestions", verbatimTextOutput("suggestions")),
+    tabPanel("Summary", verbatimTextOutput("summary")),
+    tabPanel("Plot", plotOutput("statePlot")),
     tabPanel("Comparisons Table", tableOutput("comparisons")),
-    tabPanel("Comparison Plots",plotOutput("compPlot"))
+    tabPanel("Comparison Plots",plotOutput("compPlot"),
+    tabPanel("Suggestions", verbatimTextOutput("suggestions")))
   ),
   
   h3("Simple School Lookup"),
