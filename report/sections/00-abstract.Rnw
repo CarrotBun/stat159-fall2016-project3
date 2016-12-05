@@ -4,6 +4,7 @@
  breaklinks=false,pdfborder={0 0 1},backref=false,colorlinks=false]
  {hyperref}
 \usepackage{graphicx}
+\usepackage[letterpaper, margin=1in]{geometry}
 \hypersetup{
  pdfstartview={XYZ null null 1}}
 \renewcommand{\baselinestretch}{1.5}
