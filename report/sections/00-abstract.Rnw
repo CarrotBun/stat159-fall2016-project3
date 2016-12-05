@@ -10,7 +10,6 @@
  pdfstartview={XYZ null null 1}}
 \renewcommand{\baselinestretch}{1.5}
 \begin{document}
-\SweaveOpts{concordance=TRUE}
 <<setup, include=FALSE, cache=FALSE, echo = FALSE>>=
 library(knitr)
 # set global chunk options
@@ -23,7 +22,7 @@ options(formatR.arrow=TRUE,width=90)
 \author{Erica Wong, Elly Wang, Lily Li, Bryana Gutierrez}
 
 \maketitle
-<<data, echo = FALSE, include = FALSE, print = FALSE>>=
+<<data, echo = FALSE, include = FALSE>>=
 # Loading in the necessary data files. 
 load('../data/RData-files/ols-regression.RData')
 load('../data/RData-files/ridge-regression.RData')
