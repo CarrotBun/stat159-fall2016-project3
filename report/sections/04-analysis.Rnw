@@ -24,7 +24,7 @@ The \textbf{MSE Plot of Ridge Regression} shows the relationship between MSE and
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{../images/cv-ridge-mse-plot.png}
+\includegraphics[width=0.6\textwidth]{../images/cv-ridge-mse-plot.png}
 \caption{\label{fig:cv-ridge-mse-plot}MSE Plot of Ridge Regression}
 \end{figure}
 
@@ -41,7 +41,7 @@ The plot \textbf{MSE Plot Lasso Regression} shows the relationship between MSE a
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{../images/cv-lasso-mse-plot.png}
+\includegraphics[width=0.6\textwidth]{../images/cv-lasso-mse-plot.png}
 \caption{\label{fig:cv-lasso-mse-plot}MSE Plot of Lasso Regression}
 \end{figure}
 
@@ -58,7 +58,7 @@ The plot \textbf{MSE Plot of Principal Components Regression} shows the relation
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{../images/cv-pcr-mse-plot.png}
+\includegraphics[width=0.6\textwidth]{../images/cv-pcr-mse-plot.png}
 \caption{\label{fig:cv-pcr-mse-plot}MSE Plot of Principal Components Regression}
 \end{figure}
 
@@ -75,7 +75,7 @@ The plot \textbf{MSE Plot of Partial Least Squares Regression} shows the relatio
 
 \begin{figure}
 \centering
-\includegraphics[width=0.8\textwidth]{../images/cv-pls-mse-plot.png}
+\includegraphics[width=0.6\textwidth]{../images/cv-pls-mse-plot.png}
 \caption{\label{fig:cv-pls-mse-plot}MSE Plot of Partial Least Squares Regression}
 \end{figure}
 
