@@ -111,7 +111,10 @@ ui <- fluidPage(
     tabPanel("Summary", verbatimTextOutput("summary")),
     tabPanel("Plot", plotOutput("statePlot")),
     tabPanel("Comparisons Table", tableOutput("comparisons")),
-    tabPanel("Comparison Plots",plotOutput("compPlot")),
+    tabPanel("Comparison Plots",
+             fluidRow(
+               column(8,plotOutput("compPlot")),
+               column(3, plotOutput("meanPlot")))),
     tabPanel("Suggestions", verbatimTextOutput("suggestions"))
   ),
   
@@ -405,15 +408,31 @@ server <- function(input, output) {
     school_df$Target = c(1, rep(0,20))
     tb = gather(school_df, key = Type, value = Value, -OPEID,  -INSTNM, -CITY, -STABBR, -ZIP, -Target)
     tb$Type = as.factor(tb$Type)
-    
+
     ggplot() +
       geom_bar(data= tb, aes(x = OPEID, y = Value,col = OPEID, fill = OPEID), stat= "identity") +
       facet_grid(Type~Target, scales = "free") +
       labs(x = "OPEID", y = input$selPvar) + 
       theme(axis.text.x = element_blank())
-    
+
   })
 
+  output$meanPlot <- renderPlot({
+    school_df = school_sample()
+    school_df$Target = c(1, rep(0,20))
+    tb = gather(school_df, key = Type, value = Value, -OPEID,  -INSTNM, -CITY, -STABBR, -ZIP, -Target)
+    tb$Type = as.factor(tb$Type)
+    
+    mtb <- tb %>% group_by(Type, Target) %>% summarize(mvals = mean(Value, na.rm =TRUE))
+    ggplot()+
+      geom_bar(data = mtb, aes(x=Target, y = mvals, col = Target, fill = Target),
+                      stat= "identity") + 
+      facet_grid(Type~., scales = "free") +
+      labs(x = "Target", y = "Mean Value") + 
+      theme(axis.text.x = element_blank(),
+            legend.position="none")
+    
+  })
 }
 
 # Run the application
