@@ -17,7 +17,7 @@ If predictors (regressors) are correlated, the stability of the $\hat{beta}$ dec
 
 $$Adm\ Rate = \beta_1 Married + \beta_2 Income + \beta_3 1st Generation + \dots$$  
 
-In order to find the best explanatory variables, we use model selection and cross validation. Using AIC and BIc, we find which variables would be the most helpful in predicting the admission rate. Each of these methods gives us two models: 
+In order to find the best explanatory variables, we use model selection and cross validation. Using AIC and BIC, we find which variables would be the most helpful in predicting the admission rate. Each of these methods gives us two models: 
 
 The model using AIC is, 
 
@@ -104,4 +104,4 @@ The main advantage is that PLSR uses the annotated label to maximize inter-class
 \subsection{Cross Validation and Train-Test Sets}
 Because we have limited amount of observations to build and test the model and we want to prevent bias, we will build and test the model using different subsets of the whole data set.  
 
-We built train sets using 75\% of the observations and test sets of the remaining 25\% by random sampling (without replacement). We repeated this process 10 times for a 10 fold cross validation when we ran the regressions.  
+We built train sets using 75\% of the observations and test sets of the remaining 25\% by random sampling (without replacement). We repeated this process 10 times for a 10-fold cross validation when we ran the regressions.  
