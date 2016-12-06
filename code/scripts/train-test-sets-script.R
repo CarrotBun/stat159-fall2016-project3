@@ -6,7 +6,7 @@ scaled_colleges <- read.csv('data/datasets/scaled-colleges.csv', header = TRUE)
 scaled_colleges$X <- NULL
 
 #creating a sample of indices 
-set.seed(12345)
+set.seed(98765)
 indx <- sample(1:nrow(scaled_colleges), round(.75*nrow(scaled_colleges), digits = 0))
 
 #creating a train set using the indices chosen from the sample above. 

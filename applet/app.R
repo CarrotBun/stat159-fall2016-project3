@@ -18,26 +18,6 @@ source("../code/functions/cleaning-helpers.R")
 college_data <- factor_this(college_data)
 
 ## Variables for selection menu
-varlist <- list(
-  "Admission Rate" = 23,
-  "Size" = 6,
-  "Age at entry" = 16,
-  "Gender - % Women" = 17,
-  "Marrital Status" = 18,
-  "First Generation" = 19,
-  "Family Income" = 20,
-  "SAT Scores" = 24,
-  "Completion Rate" = 30,
-  "Transfer Rate" = 31,
-  "Race - White" = 7,
-  "Race - Black" = 8,
-  "Race - Hispanic" = 9,
-  "Race - Asian" = 10,
-  "Race - American Native/Alaska Native" = 11,
-  "Race - Native Hawaiian/Pacific Islander" = 12,
-  "Race - 2 or more races" = 12,
-  "Race - Nonresident Alien" = 14
-)
 varnames <- list(
   "Admission Rate" = "avgAdmRate",
   "Size" = "avgSize",
@@ -249,7 +229,7 @@ server <- function(input, output) {
   
   # Sample 20 schools 
   school_sample  <- function() {
-    set.seed(987654321)
+    set.seed(98765)
     sample_vec <- sample(1:nrow(suggest_data()), 20, replace = TRUE)
     samp <- suggest_data()[sample_vec, ]
     rbind(target_school()[, c("OPEID",
