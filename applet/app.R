@@ -113,7 +113,7 @@ ui <- fluidPage(
     tabPanel("Comparisons Table", tableOutput("comparisons")),
     tabPanel("Comparison Plots",
              fluidRow(
-               column(8,plotOutput("compPlot")),
+               column(9,plotOutput("compPlot")),
                column(3, plotOutput("meanPlot")))),
     tabPanel("Suggestions", verbatimTextOutput("suggestions"))
   ),
@@ -428,7 +428,7 @@ server <- function(input, output) {
       geom_bar(data = mtb, aes(x=Target, y = mvals, col = Target, fill = Target),
                       stat= "identity") + 
       facet_grid(Type~., scales = "free") +
-      labs(x = "Target", y = "Mean Value") + 
+      labs(x = "Other(left) vs. Target(right)", y = "Mean Value") + 
       theme(axis.text.x = element_blank(),
             legend.position="none")
     
