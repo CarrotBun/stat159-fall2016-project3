@@ -141,6 +141,10 @@ ui <- fluidPage(
     column(
       4,
       offset = 1,
+      
+      numericInput("numShown", 
+                   label = "Number of rows in table", 
+                   value = 5),
       # Table variable selection
       selectInput(
         "selTvar",
@@ -371,7 +375,7 @@ server <- function(input, output) {
   
   # Table of all the schools that fit the basic filter
   output$table <- renderTable({
-    collegeData()[, c("OPEID", "INSTNM", "CITY", "STABBR", "ZIP", input$selTvar)]
+    head(collegeData()[, c("OPEID", "INSTNM", "CITY", "STABBR", "ZIP", input$selTvar)],input$numShown)
   }, hover = TRUE)
   
   # Suggestion of impovement
