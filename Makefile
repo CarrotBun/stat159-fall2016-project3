@@ -11,7 +11,7 @@ sections = report/sections/*
 
 .PHONY: all data cleaning processing eda session traintest ridge ols slides lasso pcr plsr regressions report tests applet
 
-all: data cleaning processing eda session traintest ridge ols slides lasso pcr plsr regressions report
+all: data cleaning processing eda traintest regressions report session slides applet
 
 
 # download data file
@@ -19,11 +19,13 @@ data:
 	curl -o $(dataset).zip https://ed-public-download.apps.cloud.gov/downloads/CollegeScorecard_Raw_Data.zip
 	unzip -u $(dataset).zip -d $(rawData)
 	rm -f $(rawData)/Crosswalks_20160908.zip
-	
+
+# remove unnecessary files and run cleaning code
 cleaning: 
 	rm -f $(extradata19) 
 	Rscript code/scripts/cleaning.R
 
+# standardize variables and create dummies
 processing:
 	Rscript code/scripts/processing.R
 
@@ -124,11 +126,11 @@ $(reppdf): $(reprnw)
 	Rscript -e "library(knitr); knit2pdf('$(reprnw)', output = 'report/report.tex')"
 
 # This target will generate the html version of the report slides.
-slides: slides/presentation.html
+slides: slides/slides.html
 
 # This target will generate the presentation in html output. 
-slides/presentation.html: 
-	Rscript -e "library(rmarkdown); render('slides/presentation.Rmd')"
+slides/slides.html: 
+	Rscript -e "library(rmarkdown); render('slides/slides.Rmd')"
 
 # This target will output session-info.txt. 
 session: session-info.txt
@@ -137,7 +139,7 @@ session: session-info.txt
 session-info.txt: $(codescr)/session.sh $(codescr)/session-info-script.R
 	bash $(codescr)/session.sh
 
-# This willrun all tests through test-that
+# This will run all tests through test-that
 tests:
 	Rscript code/test-that.R
 
