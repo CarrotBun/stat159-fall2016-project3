@@ -1,3 +1,10 @@
+# select_data will take the raw files from college scorecard and ...
+# 1. select the columns needed for this project
+# 2. convert necessary columns to character and numeric
+# 3. ZIP codes will be restricted to 5 digit only. 12345-XXXX x's will be removed
+# 4. schools with no admissions data will be removed
+# 5. completioin and transfer rates for different programs will be merged.
+
 select_data <- function(x){
   # Select Columns Needed 
   x <- select(x, OPEID, INSTNM, CITY, STABBR, ZIP, UGDS,
@@ -23,6 +30,7 @@ select_data <- function(x){
   x
 }
 
+# Factor_this will ensure setting information, ID, and year data are factors
 factor_this <- function(x){
   x$LOCALE = as.factor(x$LOCALE)
   x$ZIP = as.factor(x$ZIP)
@@ -33,6 +41,9 @@ factor_this <- function(x){
   x
 }
 
+# Apply_info will take in a data frame and helper data frame and merge 
+# locale and classification information from 2014-2015 to all previous years
+# where data is not available.
 apply_info <- function(x, helper){
   x <- select(x, -LOCALE, -CCUGPROF)
   merged <- left_join(x, helper, by = c("OPEID"= "OPEID"))
